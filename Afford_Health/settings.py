@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_use_email_as_username.apps.DjangoUseEmailAsUsernameConfig',
     'app.apps.AppConfig'  # newly created app
 ]
 
@@ -118,3 +119,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = "app.CustomUser"
+AUTHENTICATION_BACKENDS = ['accounts.backends.EmailBackend']

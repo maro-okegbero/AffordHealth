@@ -2,11 +2,12 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils import timezone
 from django.utils.datetime_safe import datetime
-from django.utils.timezone import utc
+from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 
 
 class CustomUser(AbstractUser):
-    pass
+    email = models.EmailField(_('email address'), unique=True)
 
 
 class Cause(models.Model):
@@ -37,6 +38,9 @@ class Cause(models.Model):
 
         self.last_updated = datetime.now()
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('cause_detail', args=[str(self.id)])
 
 
 class Category(models.Model):
@@ -70,6 +74,9 @@ class BlogPost(models.Model):
         """
         self.last_updated = datetime.now()
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('blog_detail', args=[str(self.id)])
 
 
 class Comment(models.Model):
