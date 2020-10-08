@@ -1,6 +1,130 @@
 {% extends "app/_base.html" %}
 
 {% load static %}
+
+{% block nav %}
+
+
+        <div class="navbar-area fixed-top">
+            <div class="huruma-responsive-nav">
+                <div class="container">
+                    <div class="huruma-responsive-menu">
+                        <div class="logo">
+                            <a href={% url 'homepage' %}>
+{#                                <img class="white-logo" alt="logo" src={% static "assets/img/logo.png" %} >#}
+{#                                <img class="black-logo" alt="image" src={% static "assets/img/logo-2.png" %} >#}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="huruma-nav">
+                <div class="container">
+                    <nav class="navbar navbar-expand-md navbar-light">
+                        <a class="navbar-brand" href={% url 'homepage' %}>
+{#                            <img class="white-logo" alt="logo" src={% static "assets/img/logo.png"%} >#}
+{#                            <img class="black-logo" alt="image" src={% static "assets/img/logo-2.png" %} >#}
+                        </a>
+
+                        <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href={% url 'homepage' %} >
+                                        Home
+                                    </a>
+
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href={% url 'about' %}>
+                                        About
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href={% url 'causes' %}>
+                                        Causes
+
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a  class="nav-link" href={% url 'faq' %}>
+                                        Faq
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        User
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href={% url 'login' %}>
+                                                Log In
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href={% url 'signup' %}>
+                                                Sign Up
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href={% url 'password_reset' %}>
+                                                Recover Password
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href={% url 'contact' %}>
+                                        Contact
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href={% url 'blog' %}>
+                                        Blog
+                                    </a>
+
+                                </li>
+
+                            </ul>
+
+                            <div class="others-options">
+
+                                <div class="option-item"><i class="search-btn bx bx-search"></i>
+                                    <i class="close-btn bx bx-x"></i>
+                                    <div class="search-overlay search-popup">
+                                        <div class='search-box'>
+                                            <form class="search-form">
+                                                <input class="search-input" name="search" placeholder="Search" type="text">
+
+                                                <button class="search-button" type="submit">
+                                                    <i class="bx bx-search"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- End Navbar Area -->
+
+{% endblock nav %}
+
+{% block content %}
         <!-- Start Home Banner Three Area -->
         <div class="home-banner-three home-banner-four">
             <div class="home-slides-four owl-carousel owl-theme">
@@ -9,8 +133,8 @@
                         <div class="d-table-cell">
                             <div class="container">
                                 <div class="main-banner-content main-banner-content-four text-center">
-                                    <span>Huruma</span>
-                                    <h1>Giving is a Divine</h1>
+                                    <span>AffordHealth</span>
+                                    <h1>Giving is a Divine Act</h1>
                                     <p>With more than half of Nigeria's population in poverty, paying medical bills has become a herculean task. Come be a knight in shinning amour</p>
                                     <div class="banner-btn">
                                         <a href="#" class="default-btn">
@@ -18,10 +142,7 @@
                                             <i class="flaticon-right"></i>
                                             <span></span>
                                         </a>
-                                        <a class="optional-btn" href="#">
-                                            Become Member
-                                            <i class="flaticon-right"></i>
-                                        </a>
+
                                     </div>
                                 </div>
                             </div>
@@ -32,77 +153,77 @@
         </div>
         <!-- End Home Banner Three Area -->
 
-        <!-- Start Top Feature Area -->
-        <section class="feature-section">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6 p-0">
-                        <div class="feature-card">
-                            <div class="icon">
-                                <img  alt="image" src={% static "assets/img/icon/1.png" %} >
-                                <img alt="image" src={% static "assets/img/icon/white-1.png" %}>
-                            </div>
-                            
-                            <h3>Become A Volunteer</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmod tempor incididun labore  voluptatem accusantium.</p>
-
-                            <a href="#" class="feature-btn">
-                                Join now +
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 col-sm-6 p-0">
-                        <div class="feature-card">
-                            <div class="icon">
-                                <img alt="image" src={% static "assets/img/icon/2.png" %}>
-                                <img alt="image" src={% static "assets/img/icon/white-2.png" %}>
-                            </div>
-                            
-                            <h3>Quick Fundraiser</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmod tempor incididun labore  voluptatem accusantium.</p>
-
-                            <a href="#" class="feature-btn">
-                                Give now +
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 col-sm-6 p-0">
-                        <div class="feature-card">
-                            <div class="icon">
-                                <img alt="image" src={% static "assets/img/icon/3.png" %}>
-                                <img alt="image" src={% static "assets/img/icon/white-3.png" %}>
-                            </div>
-                            
-                            <h3>Give Donation</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmod tempor incididun labore  voluptatem accusantium.</p>
-
-                            <a href="#" class="feature-btn">
-                                Donate now +
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 col-sm-6 p-0">
-                        <div class="feature-card">
-                            <div class="icon">
-                                <img alt="image" src={% static "assets/img/icon4.png" %}>
-                                <img alt="image" src={% static "assets/img/icon/white-4.png" %}>
-                            </div>
-                            
-                            <h3>Join as a member</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmod tempor incididun labore  voluptatem accusantium.</p>
-
-                            <a href="#" class="feature-btn">
-                                Be Member +
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End Top Feature Area -->
+{#        <!-- Start Top Feature Area -->#}
+{#        <section class="feature-section">#}
+{#            <div class="container-fluid">#}
+{#                <div class="row">#}
+{#                    <div class="col-lg-3 col-md-6 col-sm-6 p-0">#}
+{#                        <div class="feature-card">#}
+{#                            <div class="icon">#}
+{#                                <img  alt="image" src={% static "assets/img/icon/1.png" %} >#}
+{#                                <img alt="image" src={% static "assets/img/icon/white-1.png" %}>#}
+{#                            </div>#}
+{#                            #}
+{#                            <h3>Become A Volunteer</h3>#}
+{#                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmod tempor incididun labore  voluptatem accusantium.</p>#}
+{##}
+{#                            <a href="#" class="feature-btn">#}
+{#                                Join now +#}
+{#                            </a>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="col-lg-3 col-md-6 col-sm-6 p-0">#}
+{#                        <div class="feature-card">#}
+{#                            <div class="icon">#}
+{#                                <img alt="image" src={% static "assets/img/icon/2.png" %}>#}
+{#                                <img alt="image" src={% static "assets/img/icon/white-2.png" %}>#}
+{#                            </div>#}
+{#                            #}
+{#                            <h3>Quick Fundraiser</h3>#}
+{#                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmod tempor incididun labore  voluptatem accusantium.</p>#}
+{##}
+{#                            <a href="#" class="feature-btn">#}
+{#                                Give now +#}
+{#                            </a>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="col-lg-3 col-md-6 col-sm-6 p-0">#}
+{#                        <div class="feature-card">#}
+{#                            <div class="icon">#}
+{#                                <img alt="image" src={% static "assets/img/icon/3.png" %}>#}
+{#                                <img alt="image" src={% static "assets/img/icon/white-3.png" %}>#}
+{#                            </div>#}
+{#                            #}
+{#                            <h3>Give Donation</h3>#}
+{#                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmod tempor incididun labore  voluptatem accusantium.</p>#}
+{##}
+{#                            <a href="#" class="feature-btn">#}
+{#                                Donate now +#}
+{#                            </a>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="col-lg-3 col-md-6 col-sm-6 p-0">#}
+{#                        <div class="feature-card">#}
+{#                            <div class="icon">#}
+{#                                <img alt="image" src={% static "assets/img/icon4.png" %}>#}
+{#                                <img alt="image" src={% static "assets/img/icon/white-4.png" %}>#}
+{#                            </div>#}
+{#                            #}
+{#                            <h3>Join as a member</h3>#}
+{#                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elitsed do eiusmod tempor incididun labore  voluptatem accusantium.</p>#}
+{##}
+{#                            <a href="#" class="feature-btn">#}
+{#                                Be Member +#}
+{#                            </a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </section>#}
+{#        <!-- End Top Feature Area -->#}
 
         <!-- Start About Area -->
         <section class="about-section pt-70 pb-100">
@@ -118,7 +239,8 @@
                             <p class="main-color">
                                 Your support will help us to make life better living for poor vulnerable children.
                             </p>
-                            <p>Konin wansis dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+                            <p>We are a team of college students who help patients overcome this obstacle and contribute to solving this problem of healthcare unaffordability in Nigeria by raising funds for them. We seek to ensure that the sick won't have to go through arduous and depressing financial troubles to pay their medical bills.</p>
+
 
                             <div class="about-btn">
                                 <a href="#" class="default-btn">
@@ -201,7 +323,8 @@
         </section>
         <!-- End Fun Facts Area -->
 
-        <!-- Start Causes Area -->
+
+        <!-- Start Our causes Area -->
         <section class="causes-section pt-100 pb-70">
             <div class="container">
                 <div class="section-title">
@@ -216,7 +339,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
                         <div class="single-causes">
-                            <img src="assets/img/causes/1.jpg" alt="image">
+                            <img src={% static "assets/img/causes/2.jpg"%} alt="image">
                             <div class="icon">
                                 <i class="flaticon-book-1"></i>
                             </div>
@@ -229,14 +352,14 @@
                                 <div class="causes-progress-bar">
                                     <div class="causes-progress-content">
                                         <span>Raised: $5,000.00</span>
-                                        
+
                                         <div class="text-right">
                                             <span>Goal: $8,000.00</span>
                                         </div>
                                     </div>
                                     <p>Raised by 60 people within 10 days</p>
                                 </div>
-                                
+
                                 <a href="single-causes.html" class="causes-btn-one">
                                     Donate Now
                                     <i class="flaticon-right"></i>
@@ -247,7 +370,7 @@
 
                     <div class="col-lg-4 col-md-6">
                         <div class="single-causes">
-                            <img src="assets/img/causes/2.jpg" alt="image">
+                            <img src={% static "assets/img/causes/2.jpg"%} alt="image">
                             <div class="icon">
                                 <i class="flaticon-laptop"></i>
                             </div>
@@ -260,14 +383,14 @@
                                 <div class="causes-progress-bar">
                                     <div class="causes-progress-content">
                                         <span>Raised: $4,000.00</span>
-                                        
+
                                         <div class="text-right">
                                             <span>Goal: $8,000.00</span>
                                         </div>
                                     </div>
                                     <p>Raised by 40 people within 12 days</p>
                                 </div>
-                                
+
                                 <a href="single-causes.html" class="causes-btn-one">
                                     Donate Now
                                     <i class="flaticon-right"></i>
@@ -278,7 +401,7 @@
 
                     <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
                         <div class="single-causes">
-                            <img src="assets/img/causes/3.jpg" alt="image">
+                           <img src={% static "assets/img/causes/2.jpg"%} alt="image">
                             <div class="icon">
                                 <i class="flaticon-blood-bag"></i>
                             </div>
@@ -291,14 +414,14 @@
                                 <div class="causes-progress-bar">
                                     <div class="causes-progress-content">
                                         <span>Raised: $1,000.00</span>
-                                        
+
                                         <div class="text-right">
                                             <span>Goal: $5,000.00</span>
                                         </div>
                                     </div>
                                     <p>Raised by 50people within 20days</p>
                                 </div>
-                                
+
                                 <a href="single-causes.html" class="causes-btn-one">
                                     Donate Now
                                     <i class="flaticon-right"></i>
@@ -310,6 +433,7 @@
             </div>
         </section>
         <!-- End Causes Area -->
+
 
         <!-- Start Donor Area -->
         <section class="donor-section pt-100 pb-70">
@@ -435,55 +559,54 @@
                                 <i class="flaticon-target"></i>
                                 Our Mission
                             </span>
-							<h2>Concern about Our Mission</h2>
+							<h2>Why We Do What We Do</h2>
 							<div class="tab mission-list-tab">
 								<ul class="tabs">
 									<li>
 										<a href="#">
-											Our Mission
+											The Problem
 										</a>
 									</li>
 									<li>
 										<a href="#">
-											Our Vision
+											Our Motivation
 										</a>
 									</li>
 									<li>
 										<a href="#">
-											Our Goal
+											Your Impact
 										</a>
 									</li>
                                 </ul>
                                 
 								<div class="tab_content">
 									<div class="tabs_item">
-										<p>Magna  hpsum rolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut ad minim veniam, quis nostrud exercitation ullamco laboris nisi ex ea </p>
+										<p>One of the many problems in the Nigerian Healthcare system is affordability. Millions of Nigerians are not capable of funding their complete treatment bills both in private hospitals and even in public healthcare centers, where treatment costs are usually less. </p>
 
-										<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis, soluta, aspernatur dolorum sequi quisquam ullam in pariatur nihil dolorem cumque excepturi totam. Qui excepturi quasi cumque placeat fuga. Ea, eius?</p>
+										<p>Some of these patients are then denied treatment or held back in the hospital after treatment. In cases where it is clear that the quality of healthcare to be received is high, the problem of affordability becomes a significant and saddening obstacle for the patients.</p>
 										<a class="default-btn" href="#">
-                                            Our Mission
+                                            The Problem
                                             <span></span>
                                             <i class="flaticon-right"></i>
 										</a>
                                     </div>
 
                                     <div class="tabs_item">
-										<p>Magna  hpsum rolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut ad minim veniam, quis nostrud exercitation ullamco laboris nisi ex ea </p>
+										<p>We are a team of college students who help patients overcome this obstacle and contribute to solving this problem of healthcare unaffordability in Nigeria by raising funds for them. We seek to ensure that the sick won't have to go through arduous and depressing financial troubles to pay their medical bills.</p>
 
-										<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis, soluta, aspernatur dolorum sequi quisquam ullam in pariatur nihil dolorem cumque excepturi totam. Qui excepturi quasi cumque placeat fuga. Ea, eius?</p>
+										<p>We believe that one life, every life, is worth a fortune; instead of letting patients deteriorate in health or get crippled financially, psychologically, and otherwise because they cannot afford treatment, we cater to their medical bills through this initiative.</p>
 										<a class="default-btn" href="#">
-                                            Our Mission
+                                            Our Motivation
                                             <span></span>
                                             <i class="flaticon-right"></i>
 										</a>
                                     </div>
 
                                     <div class="tabs_item">
-										<p>Magna  hpsum rolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut ad minim veniam, quis nostrud exercitation ullamco laboris nisi ex ea </p>
+										<p>We cannot do this alone. We need you, your funds, and your support to enable financially constrained patients across Nigeria to AffordHealth!</p>
 
-										<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis, soluta, aspernatur dolorum sequi quisquam ullam in pariatur nihil dolorem cumque excepturi totam. Qui excepturi quasi cumque placeat fuga. Ea, eius?</p>
 										<a class="default-btn" href="#">
-                                            Our Mission
+                                            Your Impact
                                             <span></span>
                                             <i class="flaticon-right"></i>
 										</a>
@@ -497,7 +620,7 @@
         </section>
         <!-- End Mission Area -->
 
-        <!-- Start Team Area -->
+       <!-- Start Team Area -->
         <section class="team-section pt-100 pb-70">
             <div class="container">
                 <div class="team-title-area">
@@ -508,14 +631,14 @@
                                     <i class="flaticon-support"></i>
                                     Meet Our Team
                                 </span>
-                                <h2>Talented Team behind Huruma</h2>
+                                <h2>Talented Team behind Afford Health</h2>
                                 <p>Quis ipsum suspendice consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendices gravida.</p>
                             </div>
                         </div>
 
                         <div class="col-lg-5">
                             <div class="team-btn text-right">
-                                <a href="#" class="optional-btn">
+                                <a href={% url 'team' %} class="optional-btn">
                                     Meet Our Team
                                     <i class="flaticon-right"></i>
                                 </a>
@@ -525,149 +648,110 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="single-team-member">
-                            <div class="team-image">
-                                <img src="assets/img/team/7.png" alt="image">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="team-item">
+                            <div class="image">
+                                <img src="assets/img/team/1.png" alt="image">
+
+                                <ul class="social">
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class="bx bxl-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class="bx bxl-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class="bx bxl-linkedin"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class="bx bxl-instagram"></i>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
-    
-                            <ul class="social-btn">
-                                <li>
-                                    <a href="#">
-                                        <i class="flaticon-facebook"></i>
-                                    </a>
-                                </li>
-                                
-                                <li>
-                                    <a href="#">
-                                        <i class="flaticon-twitter"></i>
-                                    </a>
-                                </li>
-                                
-                                <li>
-                                    <a href="#">
-                                        <i class="flaticon-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-    
-                            <div class="member-content">
+
+                            <div class="content">
                                 <h3>Alex Maxwel</h3>
                                 <span>CEO & Founder</span>
                             </div>
-
-                            <div class="team-icon">
-                                <i class="flaticon-plus"></i>
-                            </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="single-team-member">
-                            <div class="team-image">
-                                <img src="assets/img/team/8.png" alt="image">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="team-item">
+                            <div class="image">
+                                <img src="assets/img/team/2.png" alt="image">
+
+                                <ul class="social">
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class="bx bxl-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class="bx bxl-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class="bx bxl-linkedin"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class="bx bxl-instagram"></i>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
-    
-                            <ul class="social-btn">
-                                <li>
-                                    <a href="#">
-                                        <i class="flaticon-facebook"></i>
-                                    </a>
-                                </li>
-                                
-                                <li>
-                                    <a href="#">
-                                        <i class="flaticon-twitter"></i>
-                                    </a>
-                                </li>
-                                
-                                <li>
-                                    <a href="#">
-                                        <i class="flaticon-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-    
-                            <div class="member-content">
-                                <h3>Smith Jhon</h3>
+
+                            <div class="content">
+                                <h3>Williams Halimton</h3>
                                 <span>Manager</span>
                             </div>
-
-                            <div class="team-icon">
-                                <i class="flaticon-plus"></i>
-                            </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="single-team-member">
-                            <div class="team-image">
-                                <img src="assets/img/team/9.png" alt="image">
-                            </div>
-    
-                            <ul class="social-btn">
-                                <li>
-                                    <a href="#">
-                                        <i class="flaticon-facebook"></i>
-                                    </a>
-                                </li>
-                                
-                                <li>
-                                    <a href="#">
-                                        <i class="flaticon-twitter"></i>
-                                    </a>
-                                </li>
-                                
-                                <li>
-                                    <a href="#">
-                                        <i class="flaticon-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-    
-                            <div class="member-content">
-                                <h3>Ched Kurtsovski</h3>
-                                <span>Volunteer</span>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="team-item">
+                            <div class="image">
+                                <img src="assets/img/team/3.png" alt="image">
+
+                                <ul class="social">
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class="bx bxl-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class="bx bxl-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class="bx bxl-linkedin"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                            <i class="bx bxl-instagram"></i>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
 
-                            <div class="team-icon">
-                                <i class="flaticon-plus"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="single-team-member">
-                            <div class="team-image">
-                                <img src="assets/img/team/10.png" alt="image">
-                            </div>
-    
-                            <ul class="social-btn">
-                                <li>
-                                    <a href="#">
-                                        <i class="flaticon-facebook"></i>
-                                    </a>
-                                </li>
-                                
-                                <li>
-                                    <a href="#">
-                                        <i class="flaticon-twitter"></i>
-                                    </a>
-                                </li>
-                                
-                                <li>
-                                    <a href="#">
-                                        <i class="flaticon-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-    
-                            <div class="member-content">
+                            <div class="content">
                                 <h3>Ched Kurtsovski</h3>
                                 <span>Volunteer</span>
-                            </div>
-
-                            <div class="team-icon">
-                                <i class="flaticon-plus"></i>
                             </div>
                         </div>
                     </div>
@@ -1009,238 +1093,4 @@
             </div>
         </section>
         <!-- End Blog Area -->
-
-        <!-- Start Footer Area -->
-        <footer class="footer-section pt-100">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-footer-widget">
-                            <h3>Contact info</h3>
-
-                            <div class="footer-info-contact">
-                                <i class="flaticon-pin"></i>
-                                <h3>Location</h3>
-                                <span>205 Fida Walinton, Tongo<br> New York, Canada</span>
-                            </div>
-
-                            <div class="footer-info-contact">
-                                <i class="flaticon-call"></i>
-                                <h3>Call Us</h3>
-                                <span><a href="tel:+882-569-756">987-0986-0987</a></span>
-                            </div>
-
-                            <div class="footer-info-contact">
-                                <i class="flaticon-email"></i>
-                                <h3>Email Us</h3>
-                                <span>
-                                    <a href="mailto:hello@huruma.com">
-                                        support@huruma.com
-                                    </a>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-footer-widget">
-                            <h3>Our Support</h3>
-
-                            <ul class="footer-quick-links">
-                                <li>
-                                    <a href="#">
-                                        Private Policies
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Donate Now
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Become a Volunteer
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Careers
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Contact Us
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Paid programs
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Partnership
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-2 col-md-6 col-sm-6">
-                        <div class="single-footer-widget">
-                            <h3>Our Services</h3>
-
-                            <ul class="footer-quick-links">
-                                <li>
-                                    <a href="#">
-                                        Donate
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Sponsor
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Fundraise
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Volunteer
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Partner
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Jobs
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Form 
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-footer-widget">
-                            <h3>Recent News</h3>
-
-                            <div class="footer-news">
-                               <a href="single-blog.html">
-                                    <img src="assets/img/footer-news/1.jpg" alt="image">
-                                    <h4>Support about poverty to poor family</h4>
-                                    <span>Poor, 22 January</span>
-                               </a>
-                            </div>
-
-                            <div class="footer-news">
-                               <a href="single-blog.html">
-                                    <img src="assets/img/footer-news/2.jpg" alt="image">
-                                    <h4>Mostly suffered school Boys care</h4>
-                                    <span>Health, 24 February</span>
-                               </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="copyright-area">
-                <div class="container">
-                    <div class="copyright-area-content">
-                        <div class="row align-items-center">
-                            <div class="col-lg-4">
-                                <div class="copyright-logo">
-                                    <img src="assets/img/white-logo.png" alt="image">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6">
-                                <p>
-                                    <i class="far fa-copyright"></i> 
-                                    2020 Huruma. All Rights Reserved by
-                                    <a href="https://envytheme.com/" target="_blank">
-                                        EnvyTheme
-                                    </a>
-                                </p>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6">
-                                <ul>
-                                    <li>
-                                        <a href="terms-condition.html">Terms & Conditions</a>
-                                    </li>
-                                    <li>
-                                        <a href="privacy-policy.html">Privacy Policy</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- End Footer Area -->
-
-        <!-- Start Go Top Section -->
-        <div class="go-top">
-            <i class="bx bx-chevron-up"></i>
-            <i class="bx bx-chevron-up"></i>
-        </div>
-        <!-- End Go Top Section -->
-
-        <!-- Jquery Slim JS -->
-        <script src="assets/js/jquery.min.js"></script>
-        <!-- Popper JS -->
-        <script src="assets/js/popper.min.js"></script>
-        <!-- Bootstrap JS -->
-        <script src="assets/js/bootstrap.min.js"></script>
-        <!-- Meanmenu JS -->
-        <script src="assets/js/jquery.meanmenu.js"></script>
-         <!-- Easing Min JS -->
-		<script src="assets/js/jquery.easing.min.js"></script>
-        <!-- Owl Carousel JS -->
-		<script src="assets/js/owl.carousel.js"></script>
-        <!-- Owl Magnific JS -->
-		<script src="assets/js/jquery.magnific-popup.min.js"></script>
-        <!-- Nice Select JS -->
-		<script src="assets/js/jquery.nice-select.min.js"></script>
-		<!-- Appear JS --> 
-        <script src="assets/js/jquery.appear.js"></script>
-		<!-- Odometer JS --> 
-		<script src="assets/js/odometer.min.js"></script>
-        <!-- Image Light Box JS --> 
-		<script src="assets/js/imagelightbox.min.js"></script>
-		<!-- Form Ajaxchimp JS -->
-		<script src="assets/js/jquery.ajaxchimp.min.js"></script>
-		<!-- Form Validator JS -->
-		<script src="assets/js/form-validator.min.js"></script>
-		<!-- Contact JS -->
-		<script src="assets/js/contact-form-script.js"></script>
-        <!-- Custom JS -->
-        <script src="assets/js/main.js"></script>
-        
-        <!-- Slider Revolution core JavaScript files -->
-        <script src="assets/revolution/js/jquery.themepunch.tools.min.js"></script>
-        <script src="assets/revolution/js/jquery.themepunch.revolution.min.js"></script>
-        <script src="assets/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-        <script src="assets/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
-        <script src="assets/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-        <script src="assets/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-        <script src="assets/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-        <script src="assets/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-        <script src="assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-        <script src="assets/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-        <script src="assets/revolution/js/extensions/revolution.extension.video.min.js"></script>
-        <script src="assets/js/rev-slider-custom.js"></script>
-    </body>
-</html>
+{% endblock content %}

@@ -13,4 +13,5 @@ urlpatterns = [
                 path('faq', FaqView.as_view(), name='faq'),
                 path('login', LoginView.as_view(), name='login'),
                 path('signup', RegisterView.as_view(), name='signup'),
+                path('team', Team.as_view(), name='team'),
 ]
