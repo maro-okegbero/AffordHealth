@@ -41,7 +41,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link " href={% url 'causes' %}>
+                                    <a class="nav-link active" href={% url 'causes' %}>
                                         Causes
 
                                     </a>
@@ -80,7 +80,7 @@
 
 
                                 <li class="nav-item">
-                                    <a class="nav-link active" href={% url 'contact' %}>
+                                    <a class="nav-link" href={% url 'contact' %}>
                                         Contact
                                     </a>
                                 </li>
@@ -129,10 +129,11 @@
                 <div class="d-table-cell">
                     <div class="container">
                         <div class="page-title-content">
-                            <h2>Contact</h2>
+                            <h2>Submit a Cause</h2>
                             <ul>
                                 <li><a href={% url 'homepage' %}>Home</a></li>
-                                <li>Contact</li>
+                                 <li><a href={% url 'causes' %}>Causes</a></li>
+                                <li>Submit a Cause</li>
                             </ul>
                         </div>
                     </div>
@@ -147,84 +148,81 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="contact-info-address">
-                            <h3>Quick Contact </h3>
+                            <h3>How it Works </h3>
 
                             <div class="info-contact">
-                                <i class="flaticon-pin"></i>
-                                <h3>Location</h3>
-                                <span>2, Wellington Boulevard, VI<br>Lagos, Nigeria</span>
+                                <i class="flaticon-witness"></i>
+                                <h3>Submit the Form</h3>
+                                <span>Fill in the form with the correct details and click submit</span>
                             </div>
 
                             <div class="info-contact">
-                                <i class="flaticon-call"></i>
-                                <h3>Call Us</h3>
-                                <span><a href="tel:+882-569-756">0813893117</a></span>
+                                <i class="flaticon-virtual-reality-glasses"></i>
+                                <h3>Review</h3>
+                                <span>Our Team reviews the cause to confirm the validity of the claims</span>
                             </div>
 
                             <div class="info-contact">
-                                <i class="flaticon-email"></i>
-                                <h3>Email Us</h3>
+                                <i class="flaticon-confirmation"></i>
+                                <h3>Confirmation</h3>
                                 <span>
-                                    <a href="mailto:support@affordhealth.com">
-                                        support@affordhealth.com
-                                    </a>
+                                    If the all checks out the user is contacted and the cause is approved and uploaded and donations can be made.
                                 </span>
                             </div>
+
+                             <div class="info-contact">
+                                <i class="flaticon-testimonial"></i>
+                                <h3>Target Reached</h3>
+                                <span>
+                                    When the Target amount is reached the cause is closed and donations cease. The user is then contacted and the money is immediately transferred.
+                                </span>
+                            </div>
+
                         </div>
                     </div>
 
                     <div class="col-lg-8">
                         <div class="contact-area">
                             <div class="contact-content">
-                                <h3>Let’s talk!</h3>
-                                <p>Contact us to get, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ainim veniam.</p>
+                                <h3>Submit a Cause</h3>
+                                <p>Please fill the form with the correct details. The legitimacy of these claims will be thoroughly investigated</p>
                             </div>
 
                             <div class="contact-form">
-                                <form id="contactForm">
+                                <form id="contactForm" action="#" method="POST" enctype="multipart/form-data">
+                                     {% csrf_token %}
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="text" name="name" id="name" class="form-control" required data-error="Please enter your name" placeholder="Name">
+                                                {{ form.name }}
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
 
                                         <div class="col-lg-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="text" name="phone_number" id="phone_number" required data-error="Please enter your number" class="form-control" placeholder="Phone">
+                                                {{ form.hospital_address }}
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
         
                                         <div class="col-lg-6 col-md-6">
                                             <div class="form-group">
-                                                <input type="email" name="email" id="email" class="form-control" required data-error="Please enter your email" placeholder="email">
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                        </div>
-        
-                                        <div class="col-lg-6 col-md-6">
-                                            <div class="form-group">
-                                                <input type="text" name="msg_website" id="msg_website" class="form-control" required data-error="Please enter your website" placeholder="Website">
+                                                {{ form.target }}
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
         
                                         <div class="col-lg-12 col-md-12">
                                             <div class="form-group">
-                                                <textarea name="message" class="form-control" id="message" cols="30" rows="6" required data-error="Write your message" placeholder="Write Something"></textarea>
+                                                {{ form.description }}
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
 
                                         <div class="col-lg-12">
                                             <div class="send-btn">
-                                                <button type="submit" class="default-btn">
-                                                    Contact us
-                                                    <i class="flaticon-right"></i>
-                                                    <span></span>
-                                                </button>
+                                                <input type="submit" class="default-btn" value="Submit">
                                             </div>
                                             <div id="msgSubmit" class="h3 text-center hidden"></div>
                                             <div class="clearfix"></div>
@@ -239,9 +237,5 @@
         </section>
         <!-- End Contact Area -->
 
-        <!-- Start Map Area -->
-        <div class="map-section">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.522136382717!2d3.318946114529112!3d6.581823824309177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b91e751d71485%3A0xf222ed73a7d14f9a!2sMurtala%20Muhammed%20International%20Airport!5e0!3m2!1sen!2sng!4v1602429377572!5m2!1sen!2sng" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-        </div>
-        <!-- End Map Area -->
+
 {% endblock content%}

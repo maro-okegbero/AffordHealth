@@ -1,6 +1,8 @@
-{% extends "app/_base.html" %}
-
+{% extends 'app/_base.html' %}
 {% load static %}
+{#{% load cloudinary %}#}
+{% load humanize %}
+
 
 {% block nav %}
 
@@ -282,7 +284,7 @@
                         <div class="single-fun-fact">
                             <p>Beneficiaries</p>
                             <h3>
-                                <span class="sign-icon dolor">$</span>
+                                <span class="sign-icon dolor">₦</span>
                                 <span class="odometer" data-count="500">00</span>
                                 <span class="sign-icon">M</span>
                             </h3>
@@ -311,7 +313,7 @@
 
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="single-fun-fact">
-                            <p>Donated Poor</p>
+                            <p>Closed Causes</p>
                             <h3>
                                 <span class="odometer" data-count="20">00</span>
                                 <span class="sign-icon">K</span>
@@ -324,7 +326,7 @@
         <!-- End Fun Facts Area -->
 
 
-        <!-- Start Our causes Area -->
+        <!-- Start Causes Area -->
         <section class="causes-section pt-100 pb-70">
             <div class="container">
                 <div class="section-title">
@@ -337,103 +339,45 @@
                 </div>
 
                 <div class="row">
+
+                    {% for obj in causes %}
                     <div class="col-lg-4 col-md-6">
                         <div class="single-causes">
-                            <img src={% static "assets/img/causes/2.jpg"%} alt="image">
-                            <div class="icon">
-                                <i class="flaticon-book-1"></i>
-                            </div>
-
-                            <div class="causes-content">
-                                <span>#Education</span>
-                                <h3>Education for poor child</h3>
-                                <p>Lorem ipsum dolor sit amet, consecteturad eiustempor incididunlabore</p>
-
-                                <div class="causes-progress-bar">
-                                    <div class="causes-progress-content">
-                                        <span>Raised: $5,000.00</span>
-
-                                        <div class="text-right">
-                                            <span>Goal: $8,000.00</span>
-                                        </div>
-                                    </div>
-                                    <p>Raised by 60 people within 10 days</p>
-                                </div>
-
-                                <a href="single-causes.html" class="causes-btn-one">
-                                    Donate Now
-                                    <i class="flaticon-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-causes">
-                            <img src={% static "assets/img/causes/2.jpg"%} alt="image">
-                            <div class="icon">
-                                <i class="flaticon-laptop"></i>
-                            </div>
-
-                            <div class="causes-content">
-                                <span>#Donation</span>
-                                <h3>Massive donation to poor</h3>
-                                <p>Lorem ipsum dolor sit amet, consecteturad eiustempor incididunlabore</p>
-
-                                <div class="causes-progress-bar">
-                                    <div class="causes-progress-content">
-                                        <span>Raised: $4,000.00</span>
-
-                                        <div class="text-right">
-                                            <span>Goal: $8,000.00</span>
-                                        </div>
-                                    </div>
-                                    <p>Raised by 40 people within 12 days</p>
-                                </div>
-
-                                <a href="single-causes.html" class="causes-btn-one">
-                                    Donate Now
-                                    <i class="flaticon-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
-                        <div class="single-causes">
-                           <img src={% static "assets/img/causes/2.jpg"%} alt="image">
+                            <img src={%static "assets/img/causes/1.jpg"%} alt="image">
                             <div class="icon">
                                 <i class="flaticon-blood-bag"></i>
                             </div>
 
                             <div class="causes-content">
-                                <span>#Helpless</span>
-                                <h3>Huge help to homeless pupil</h3>
-                                <p>Lorem ipsum dolor sit amet, consecteturad eiustempor incididunlabore</p>
+{#                                <span>#Donation</span>#}
+                                <h3>{{ obj.name }}</h3>
+                                <p>{{ obj.description|truncatechars:100 }}</p>
 
-                                <div class="causes-progress-bar">
+                                <div class="progress" style="height: 20px;">
+
+                                     <div class="progress-bar progress-bar-striped bg-red" role="progressbar" style="width: {{ object.percentage_done }}%; background-color: #ff6015;" aria-valuenow="{{ obj.percentage_done }}" aria-valuemin="0" aria-valuemax="100"><b>{{ obj.percentage_done }}%</b></div>
                                     <div class="causes-progress-content">
-                                        <span>Raised: $1,000.00</span>
+                                        <span>Raised: ₦{{ obj.donated | intcomma}}</span>
 
                                         <div class="text-right">
-                                            <span>Goal: $5,000.00</span>
+                                            <span>Goal: ₦{{obj.target| intcomma}}</span>
                                         </div>
                                     </div>
-                                    <p>Raised by 50people within 20days</p>
+                                    <p>Raised by {{ obj.donor_count }} people within {{ obj.date_created | timesince}} </p>
                                 </div>
 
-                                <a href="single-causes.html" class="causes-btn-one">
+                                <a href={% url 'cause_detail' obj.pk %} class="causes-btn-one">
                                     Donate Now
                                     <i class="flaticon-right"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
         </section>
         <!-- End Causes Area -->
-
 
         <!-- Start Donor Area -->
         <section class="donor-section pt-100 pb-70">
@@ -585,7 +529,7 @@
 
 										<p>Some of these patients are then denied treatment or held back in the hospital after treatment. In cases where it is clear that the quality of healthcare to be received is high, the problem of affordability becomes a significant and saddening obstacle for the patients.</p>
 										<a class="default-btn" href="#">
-                                            The Problem
+                                            Donate Now
                                             <span></span>
                                             <i class="flaticon-right"></i>
 										</a>
@@ -596,7 +540,7 @@
 
 										<p>We believe that one life, every life, is worth a fortune; instead of letting patients deteriorate in health or get crippled financially, psychologically, and otherwise because they cannot afford treatment, we cater to their medical bills through this initiative.</p>
 										<a class="default-btn" href="#">
-                                            Our Motivation
+                                            Donate Now
                                             <span></span>
                                             <i class="flaticon-right"></i>
 										</a>
@@ -606,7 +550,7 @@
 										<p>We cannot do this alone. We need you, your funds, and your support to enable financially constrained patients across Nigeria to AffordHealth!</p>
 
 										<a class="default-btn" href="#">
-                                            Your Impact
+                                            Donate Now
                                             <span></span>
                                             <i class="flaticon-right"></i>
 										</a>
@@ -678,7 +622,7 @@
                             </div>
 
                             <div class="content">
-                                <h3>Alex Maxwel</h3>
+                                <h3>Joshua Gbodi</h3>
                                 <span>CEO & Founder</span>
                             </div>
                         </div>
@@ -714,7 +658,7 @@
                             </div>
 
                             <div class="content">
-                                <h3>Williams Halimton</h3>
+                                <h3>Precious</h3>
                                 <span>Manager</span>
                             </div>
                         </div>
@@ -750,7 +694,7 @@
                             </div>
 
                             <div class="content">
-                                <h3>Ched Kurtsovski</h3>
+                                <h3>Fortune </h3>
                                 <span>Volunteer</span>
                             </div>
                         </div>
@@ -1015,8 +959,8 @@
             </div>
 
             <div class="default-shape">
-                <img src="assets/img/donate/1.png" alt="image">
-                <img src="assets/img/donate/2.png" alt="image">
+                <img alt="image" src={% static  "assets/img/donate/1.png" %} >
+                <img alt="image" src={% static  "assets/img/donate/1.png" %} >
             </div>
         </section>
         <!-- End Donate Area -->
@@ -1029,7 +973,7 @@
                         <i class="flaticon-book"></i>
                         Our Blog
                     </span>
-                    <h2>Check Out Our Latest News</h2>
+                    <h2>Check Out Our Latest Blog Posts</h2>
                 </div>
 
                 <div class="row">

@@ -1,5 +1,8 @@
 {% extends 'app/_base.html' %}
 {% load static %}
+{#{% load cloudinary %}#}
+{% load humanize %}
+
 
 {% block nav %}
 
@@ -134,6 +137,15 @@
                                 <li><a href={% url 'homepage' %}>Home</a></li>
                                 <li>Our Causes</li>
                             </ul>
+                            <p></p>
+                             <div class="banner-btn">
+                                        <a href={% url 'submit_cause' %} class="default-btn">
+                                            Submit A Cause
+                                            <i class="flaticon-right"></i>
+                                            <span></span>
+                                        </a>
+
+                                    </div>
                         </div>
                     </div>
                 </div>
@@ -154,203 +166,70 @@
                 </div>
 
                 <div class="row">
+
+                    {% for obj in page_obj %}
                     <div class="col-lg-4 col-md-6">
                         <div class="single-causes">
                             <img src={%static "assets/img/causes/1.jpg"%} alt="image">
                             <div class="icon">
-                                <i class="flaticon-book-1"></i>
-                            </div>
-
-                            <div class="causes-content">
-                                <span>#Education</span>
-                                <h3>Education for poor child</h3>
-                                <p>Lorem ipsum dolor sit amet, consecteturad eiustempor incididunlabore</p>
-
-                                <div class="causes-progress-bar">
-                                    <div class="causes-progress-content">
-                                        <span>Raised: $5,000.00</span>
-                                        
-                                        <div class="text-right">
-                                            <span>Goal: $8,000.00</span>
-                                        </div>
-                                    </div>
-                                    <p>Raised by 60 people within 10 days</p>
-                                </div>
-                                
-                                <a href="single-causes.html" class="causes-btn-one">
-                                    Donate Now
-                                    <i class="flaticon-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-causes">
-                            <img src="assets/img/causes/2.jpg" alt="image">
-                            <div class="icon">
-                                <i class="flaticon-laptop"></i>
-                            </div>
-
-                            <div class="causes-content">
-                                <span>#Donation</span>
-                                <h3>Massive donation to poor</h3>
-                                <p>Lorem ipsum dolor sit amet, consecteturad eiustempor incididunlabore</p>
-
-                                <div class="causes-progress-bar">
-                                    <div class="causes-progress-content">
-                                        <span>Raised: $4,000.00</span>
-                                        
-                                        <div class="text-right">
-                                            <span>Goal: $8,000.00</span>
-                                        </div>
-                                    </div>
-                                    <p>Raised by 40 people within 12 days</p>
-                                </div>
-                                
-                                <a href="single-causes.html" class="causes-btn-one">
-                                    Donate Now
-                                    <i class="flaticon-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-causes">
-                            <img src="assets/img/causes/3.jpg" alt="image">
-                            <div class="icon">
                                 <i class="flaticon-blood-bag"></i>
                             </div>
 
                             <div class="causes-content">
-                                <span>#Helpless</span>
-                                <h3>Huge help to homeless pupil</h3>
-                                <p>Lorem ipsum dolor sit amet, consecteturad eiustempor incididunlabore</p>
+{#                                <span>#Donation</span>#}
+                                <h3>{{ obj.name }}</h3>
+                                <p>{{ obj.description|truncatechars:100 }}</p>
 
-                                <div class="causes-progress-bar">
+                                <div class="progress" style="height: 20px;">
+
+                                     <div class="progress-bar progress-bar-striped bg-red" role="progressbar" style="width: {{ object.percentage_done }}%; background-color: #ff6015;" aria-valuenow="{{ obj.percentage_done }}" aria-valuemin="0" aria-valuemax="100"><b>{{ obj.percentage_done }}%</b></div>
                                     <div class="causes-progress-content">
-                                        <span>Raised: $1,000.00</span>
-                                        
+                                        <span>Raised: ₦{{ obj.donated | intcomma}}</span>
+
                                         <div class="text-right">
-                                            <span>Goal: $5,000.00</span>
+                                            <span>Goal: ₦{{obj.target| intcomma}}</span>
                                         </div>
                                     </div>
-                                    <p>Raised by 50people within 20days</p>
+                                    <p>Raised by {{ obj.donor_count }} people within {{ obj.date_created | timesince}} </p>
                                 </div>
                                 
-                                <a href="single-causes.html" class="causes-btn-one">
+                                <a href={% url 'cause_detail' obj.pk %} class="causes-btn-one">
                                     Donate Now
                                     <i class="flaticon-right"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-causes">
-                            <img src="assets/img/causes/4.jpg" alt="image">
-                            <div class="icon">
-                                <i class="flaticon-book-1"></i>
-                            </div>
-
-                            <div class="causes-content">
-                                <span>#Education</span>
-                                <h3>Education for poor child</h3>
-                                <p>Lorem ipsum dolor sit amet, consecteturad eiustempor incididunlabore</p>
-
-                                <div class="causes-progress-bar">
-                                    <div class="causes-progress-content">
-                                        <span>Raised: $5,000.00</span>
-                                        
-                                        <div class="text-right">
-                                            <span>Goal: $8,000.00</span>
-                                        </div>
-                                    </div>
-                                    <p>Raised by 60 people within 10 days</p>
-                                </div>
-                                
-                                <a href="single-causes.html" class="causes-btn-one">
-                                    Donate Now
-                                    <i class="flaticon-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-causes">
-                            <img src="assets/img/causes/5.jpg" alt="image">
-                            <div class="icon">
-                                <i class="flaticon-laptop"></i>
-                            </div>
-
-                            <div class="causes-content">
-                                <span>#Donation</span>
-                                <h3>Massive donation to poor</h3>
-                                <p>Lorem ipsum dolor sit amet, consecteturad eiustempor incididunlabore</p>
-
-                                <div class="causes-progress-bar">
-                                    <div class="causes-progress-content">
-                                        <span>Raised: $4,000.00</span>
-                                        
-                                        <div class="text-right">
-                                            <span>Goal: $8,000.00</span>
-                                        </div>
-                                    </div>
-                                    <p>Raised by 40 people within 12 days</p>
-                                </div>
-                                
-                                <a href="single-causes.html" class="causes-btn-one">
-                                    Donate Now
-                                    <i class="flaticon-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-causes">
-                            <img src="assets/img/causes/6.jpg" alt="image">
-                            <div class="icon">
-                                <i class="flaticon-blood-bag"></i>
-                            </div>
-
-                            <div class="causes-content">
-                                <span>#Helpless</span>
-                                <h3>Huge help to homeless pupil</h3>
-                                <p>Lorem ipsum dolor sit amet, consecteturad eiustempor incididunlabore</p>
-
-                                <div class="causes-progress-bar">
-                                    <div class="causes-progress-content">
-                                        <span>Raised: $1,000.00</span>
-                                        
-                                        <div class="text-right">
-                                            <span>Goal: $5,000.00</span>
-                                        </div>
-                                    </div>
-                                    <p>Raised by 50people within 20days</p>
-                                </div>
-                                
-                                <a href="single-causes.html" class="causes-btn-one">
-                                    Donate Now
-                                    <i class="flaticon-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
 
                     <div class="col-lg-12 col-md-12">
                         <div class="pagination-area">
-                            <a href="#" class="prev page-numbers">
-                                <i class="flaticon-left"></i>
+                            {% if page_obj.has_previous %}
+                               <a href="?page={{ page_obj.previous_page_number }}" class="prev page-numbers">
+                            {% else %}
+                                <a href="#" class="prev page-numbers">
+                            {% endif %}
+                                    <i class="flaticon-left"></i>
+                                </a>
+                                {% for pg in paginator.page_range %}
+
+                                    {% if pg  == page_obj.number %}
+                                         <a href="?page={{ pg }}" class="page-numbers current" aria-current="page">{{ pg }}</a>
+                                    {% else %}
+                                        <a href="?page={{ pg }}" class="page-numbers">{{ pg }}</a>
+                                    {% endif %}
+
+
+                                {% endfor %}
+
+                                {% if page_obj.has_next %}
+                                    <a href="?page={{ page_obj.next_page_number }}" class="next page-numbers">
+                                {% else %}
+                                    <a href="#" class="next page-numbers">
+                                    <i class="flaticon-right"></i>
+                                </a>
+                               {% endif %}
                             </a>
-                            <a href="#" class="page-numbers">1</a>
-                            <span class="page-numbers current" aria-current="page">2</span>
-                            <a href="#" class="page-numbers">3</a>
-                            <a href="#" class="page-numbers">4</a>
-                            <a href="#" class="next page-numbers">
-                                <i class="flaticon-right"></i>
                             </a>
                         </div>
                     </div>
