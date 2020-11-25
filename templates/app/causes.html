@@ -44,42 +44,42 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link active" href={% url 'causes' %}>
-                                        Causes
+                                    <a class="nav-link active" href={% url 'cases' %}>
+                                        Cases
 
                                     </a>
                                 </li>
 
 
-                                <li class="nav-item">
-                                    <a  class="nav-link" href={% url 'faq' %}>
-                                        Faq
-                                    </a>
-                                </li>
-
-
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        User
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href={% url 'login' %}>
-                                                Log In
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href={% url 'signup' %}>
-                                                Sign Up
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href={% url 'password_reset' %}>
-                                                Recover Password
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
+{#                                <li class="nav-item">#}
+{#                                    <a  class="nav-link" href={% url 'faq' %}>#}
+{#                                        Faq#}
+{#                                    </a>#}
+{#                                </li>#}
+{##}
+{##}
+{#                                <li class="nav-item">#}
+{#                                    <a href="#" class="nav-link">#}
+{#                                        User#}
+{#                                    </a>#}
+{#                                    <ul class="dropdown-menu">#}
+{#                                        <li class="nav-item">#}
+{#                                            <a class="nav-link" href={% url 'login' %}>#}
+{#                                                Log In#}
+{#                                            </a>#}
+{#                                        </li>#}
+{#                                        <li class="nav-item">#}
+{#                                            <a class="nav-link" href={% url 'signup' %}>#}
+{#                                                Sign Up#}
+{#                                            </a>#}
+{#                                        </li>#}
+{#                                        <li class="nav-item">#}
+{#                                            <a class="nav-link" href={% url 'password_reset' %}>#}
+{#                                                Recover Password#}
+{#                                            </a>#}
+{#                                        </li>#}
+{#                                    </ul>#}
+{#                                </li>#}
 
 
                                 <li class="nav-item">
@@ -127,25 +127,25 @@
 {% block content %}
 
         <!-- Start Page Title Area -->
-        <div class="page-title-area">
+        <div class="page-title-area"  style="background-image: url({% static "assets/img/blog-details/charity giving 2.png" %}); background-position: center center; background-size: cover; background-repeat: no-repeat; background-attachment: fixed; z-index: 1;">
             <div class="d-table">
                 <div class="d-table-cell">
                     <div class="container">
                         <div class="page-title-content">
-                            <h2>Our Causes</h2>
+                            <h2>CASES</h2>
                             <ul>
                                 <li><a href={% url 'homepage' %}>Home</a></li>
-                                <li>Our Causes</li>
+                                <li>Current Cases</li>
                             </ul>
                             <p></p>
-                             <div class="banner-btn">
-                                        <a href={% url 'submit_cause' %} class="default-btn">
-                                            Submit A Cause
-                                            <i class="flaticon-right"></i>
-                                            <span></span>
-                                        </a>
-
-                                    </div>
+{#                             <div class="banner-btn">#}
+{#                                        <a href={% url 'submit_cause' %} class="default-btn">#}
+{#                                            Submit A Cause#}
+{#                                            <i class="flaticon-right"></i>#}
+{#                                            <span></span>#}
+{#                                        </a>#}
+{##}
+{#                                    </div>#}
                         </div>
                     </div>
                 </div>
@@ -159,10 +159,10 @@
                 <div class="section-title">
                     <span>
                         <i class="flaticon-ribbon"></i>
-                        Our Causes
+                        Ongoing Cases
                     </span>
-                    <h2>The causes we care about</h2>
-                    <p>Quis ipsum suspendice consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendices gravida.</p>
+                    <h2>Cases</h2>
+                    <p></p>
                 </div>
 
                 <div class="row">
@@ -193,7 +193,7 @@
                                     <p>Raised by {{ obj.donor_count }} people within {{ obj.date_created | timesince}} </p>
                                 </div>
                                 
-                                <a href={% url 'cause_detail' obj.pk %} class="causes-btn-one">
+                                <a href={% url 'case_detail' obj.pk %} class="causes-btn-one">
                                     Donate Now
                                     <i class="flaticon-right"></i>
                                 </a>
@@ -238,60 +238,9 @@
         </section>
         <!-- End Causes Area -->
 
-        <!-- Start Instagram Area -->
-        <div class="instagram-area">
-            <div class="instagram-slides owl-carousel owl-theme">
-                <div class="instagram-box">
-                    <img src="assets/img/instagram/1.jpg" alt="image">
-
-                    <div class="icon">
-                        <i class="flaticon-instagram"></i>
-                    </div>
-
-                    <a href="https://www.instagram.com/" target="_blank"></a>
-                </div>
-
-                <div class="instagram-box">
-                    <img src="assets/img/instagram/2.jpg" alt="image">
-
-                    <div class="icon">
-                        <i class="flaticon-instagram"></i>
-                    </div>
-
-                    <a href="https://www.instagram.com/" target="_blank"></a>
-                </div>
-
-                <div class="instagram-box">
-                    <img src="assets/img/instagram/3.jpg" alt="image">
-
-                    <div class="icon">
-                        <i class="flaticon-instagram"></i>
-                    </div>
-
-                    <a href="https://www.instagram.com/" target="_blank"></a>
-                </div>
-
-                <div class="instagram-box">
-                    <img src="assets/img/instagram/4.jpg" alt="image">
-
-                    <div class="icon">
-                        <i class="flaticon-instagram"></i>
-                    </div>
-
-                    <a href="https://www.instagram.com/" target="_blank"></a>
-                </div>
-
-                <div class="instagram-box">
-                    <img src="assets/img/instagram/5.jpg" alt="image">
-
-                    <div class="icon">
-                        <i class="flaticon-instagram"></i>
-                    </div>
-
-                    <a href="https://www.instagram.com/" target="_blank"></a>
-                </div>
-            </div>
-        </div>
-        <!-- End Instagram Area -->
 
 {% endblock content %}
+
+{% block footer_blog %}
+ {% include 'app/fotter_blog_section.html' %}
+{% endblock footer_blog %}

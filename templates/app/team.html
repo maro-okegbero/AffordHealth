@@ -41,42 +41,12 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href={% url 'causes' %}>
-                                        Causes
+                                    <a class="nav-link" href={% url 'cases' %}>
+                                        cases
 
                                     </a>
                                 </li>
 
-
-                                <li class="nav-item">
-                                    <a  class="nav-link" href={% url 'faq' %}>
-                                        Faq
-                                    </a>
-                                </li>
-
-
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        User
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href={% url 'login' %}>
-                                                Log In
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href={% url 'signup' %}>
-                                                Sign Up
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href={% url 'password_reset' %}>
-                                                Recover Password
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
 
 
                                 <li class="nav-item">
@@ -124,23 +94,6 @@
 {% block content %}
 
 
-        <!-- Start Page Title Area -->
-        <div class="page-title-area">
-            <div class="d-table">
-                <div class="d-table-cell">
-                    <div class="container">
-                        <div class="page-title-content">
-                            <h2>Team</h2>
-                            <ul>
-                                <li><a href={% url 'homepage' %}>Home</a></li>
-                                <li>Team</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Page Title Area -->
 
         <!-- Start Team Area -->
         <section class="team-section pt-100 pb-70">
@@ -153,18 +106,13 @@
                                     <i class="flaticon-support"></i>
                                     Meet Our Team
                                 </span>
-                                <h2>Talented Team behind AffordHealth</h2>
-                                <p>Quis ipsum suspendice consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendices gravida.</p>
+                                <h2>Talented And Dedicated Team behind AffordHealth</h2>
+                                <p>We are a team of college students who help patients overcome this obstacle and contribute to solving this problem of healthcare unaffordability in Nigeria</p>
                             </div>
                         </div>
 
                         <div class="col-lg-5">
-                            <div class="team-btn text-right">
-                                <a href="#" class="optional-btn">
-                                    Meet Our Team
-                                    <i class="flaticon-right"></i>
-                                </a>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -173,26 +121,26 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="team-item">
                             <div class="image">
-                                <img src="assets/img/team/1.png" alt="image">
+                                 <img src={% static "assets/img/team/gbodi.jpg" %} alt="Joshua">
     
-                                <ul class="social">
+                                 <ul class="social">
                                     <li>
-                                        <a href="#" target="_blank">
+                                        <a href="https://web.facebook.com/john.doe.33886" target="_blank">
                                             <i class="bx bxl-facebook"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" target="_blank">
+                                        <a href="https://web.twitter.com/" target="_blank">
                                             <i class="bx bxl-twitter"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" target="_blank">
+                                        <a href="https://linkedin.com/" target="_blank">
                                             <i class="bx bxl-linkedin"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" target="_blank">
+                                        <a href="https://instagram.com/" target="_blank">
                                             <i class="bx bxl-instagram"></i>
                                         </a>
                                     </li>
@@ -200,250 +148,107 @@
                             </div>
     
                             <div class="content">
-                                <h3>Alex Maxwel</h3>
-                                <span>CEO & Founder</span>
+                                <h3>Joshua Gbodi</h3>
+                                <span>Team Lead</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 col-sm-6">
+                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="team-item">
                             <div class="image">
-                                <img src="assets/img/team/2.png" alt="image">
-    
-                                <ul class="social">
+                                 <img src={% static "assets/img/team/precious2.jpg" %} alt="Precious">
+
+                                 <ul class="social">
                                     <li>
-                                        <a href="#" target="_blank">
+                                        <a href="https://web.facebook.com/john.doe.33886" target="_blank">
                                             <i class="bx bxl-facebook"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" target="_blank">
+                                        <a href="https://web.twitter.com/" target="_blank">
                                             <i class="bx bxl-twitter"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" target="_blank">
+                                        <a href="https://linkedin.com/" target="_blank">
                                             <i class="bx bxl-linkedin"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" target="_blank">
+                                        <a href="https://instagram.com/" target="_blank">
                                             <i class="bx bxl-instagram"></i>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
-    
+
                             <div class="content">
-                                <h3>Williams Halimton</h3>
-                                <span>Manager</span>
+                                <h3>Precious Ukaegbu</h3>
+                                <span>Facilitator</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="team-item">
-                            <div class="image">
-                                <img src="assets/img/team/3.png" alt="image">
-    
-                                <ul class="social">
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-linkedin"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-    
-                            <div class="content">
-                                <h3>Ched Kurtsovski</h3>
-                                <span>Volunteer</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="team-item">
-                            <div class="image">
-                                <img src="assets/img/team/4.png" alt="image">
-    
-                                <ul class="social">
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-linkedin"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-    
-                            <div class="content">
-                                <h3>Ched Kurtsovski</h3>
-                                <span>CEO & Founder</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="team-item">
-                            <div class="image">
-                                <img src="assets/img/team/5.png" alt="image">
-    
-                                <ul class="social">
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-linkedin"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-    
-                            <div class="content">
-                                <h3>Jack Blumberg</h3>
-                                <span>Manager</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="team-item">
-                            <div class="image">
-                                <img src="assets/img/team/6.png" alt="image">
-    
-                                <ul class="social">
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-linkedin"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class="bx bxl-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-    
-                            <div class="content">
-                                <h3>Cesario Lee</h3>
-                                <span>Volunteer</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
         <!-- End Team Area -->
 
         <!-- Start Instagram Area -->
-        <div class="instagram-area">
-            <div class="instagram-slides owl-carousel owl-theme">
-                <div class="instagram-box">
-                    <img src="assets/img/instagram/1.jpg" alt="image">
-
-                    <div class="icon">
-                        <i class="flaticon-instagram"></i>
-                    </div>
-
-                    <a href="https://www.instagram.com/" target="_blank"></a>
-                </div>
-
-                <div class="instagram-box">
-                    <img src="assets/img/instagram/2.jpg" alt="image">
-
-                    <div class="icon">
-                        <i class="flaticon-instagram"></i>
-                    </div>
-
-                    <a href="https://www.instagram.com/" target="_blank"></a>
-                </div>
-
-                <div class="instagram-box">
-                    <img src="assets/img/instagram/3.jpg" alt="image">
-
-                    <div class="icon">
-                        <i class="flaticon-instagram"></i>
-                    </div>
-
-                    <a href="https://www.instagram.com/" target="_blank"></a>
-                </div>
-
-                <div class="instagram-box">
-                    <img src="assets/img/instagram/4.jpg" alt="image">
-
-                    <div class="icon">
-                        <i class="flaticon-instagram"></i>
-                    </div>
-
-                    <a href="https://www.instagram.com/" target="_blank"></a>
-                </div>
-
-                <div class="instagram-box">
-                    <img src="assets/img/instagram/5.jpg" alt="image">
-
-                    <div class="icon">
-                        <i class="flaticon-instagram"></i>
-                    </div>
-
-                    <a href="https://www.instagram.com/" target="_blank"></a>
-                </div>
-            </div>
-        </div>
+{#        <div class="instagram-area">#}
+{#            <div class="instagram-slides owl-carousel owl-theme">#}
+{#                <div class="instagram-box">#}
+{#                    <img src="assets/img/instagram/1.jpg" alt="image">#}
+{##}
+{#                    <div class="icon">#}
+{#                        <i class="flaticon-instagram"></i>#}
+{#                    </div>#}
+{##}
+{#                    <a href="https://www.instagram.com/" target="_blank"></a>#}
+{#                </div>#}
+{##}
+{#                <div class="instagram-box">#}
+{#                    <img src="assets/img/instagram/2.jpg" alt="image">#}
+{##}
+{#                    <div class="icon">#}
+{#                        <i class="flaticon-instagram"></i>#}
+{#                    </div>#}
+{##}
+{#                    <a href="https://www.instagram.com/" target="_blank"></a>#}
+{#                </div>#}
+{##}
+{#                <div class="instagram-box">#}
+{#                    <img src="assets/img/instagram/3.jpg" alt="image">#}
+{##}
+{#                    <div class="icon">#}
+{#                        <i class="flaticon-instagram"></i>#}
+{#                    </div>#}
+{##}
+{#                    <a href="https://www.instagram.com/" target="_blank"></a>#}
+{#                </div>#}
+{##}
+{#                <div class="instagram-box">#}
+{#                    <img src="assets/img/instagram/4.jpg" alt="image">#}
+{##}
+{#                    <div class="icon">#}
+{#                        <i class="flaticon-instagram"></i>#}
+{#                    </div>#}
+{##}
+{#                    <a href="https://www.instagram.com/" target="_blank"></a>#}
+{#                </div>#}
+{##}
+{#                <div class="instagram-box">#}
+{#                    <img src="assets/img/instagram/5.jpg" alt="image">#}
+{##}
+{#                    <div class="icon">#}
+{#                        <i class="flaticon-instagram"></i>#}
+{#                    </div>#}
+{##}
+{#                    <a href="https://www.instagram.com/" target="_blank"></a>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
         <!-- End Instagram Area -->
 
 {% endblock %}

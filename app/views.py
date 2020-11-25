@@ -14,6 +14,13 @@ from accounts.forms import LoginForm, RegisterForm
 class AboutView(TemplateView):
     template_name = "app/about.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['now'] = timezone.now()
+        context['cases'] = Cause.objects.all()[:5]
+        context['blog_posts'] = BlogPost.objects.all()[:3]
+        return context
+
 
 class BlogListView(ListView):
     template_name = 'app/blog-1.html'
@@ -23,6 +30,7 @@ class BlogListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()
+        context['blog_posts'] = BlogPost.objects.all()[:3]
         return context
 
 
@@ -33,10 +41,13 @@ class BlogDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()
+        context_object = context['object']
+        object_title = context_object.title
+        context['blog_posts'] = BlogPost.objects.exclude(title__exact=object_title)[:3]
         return context
 
 
-class CausesList(ListView):
+class CasesList(ListView):
     template_name = 'app/causes.html'
     model = Cause
     paginate_by = 6
@@ -44,24 +55,28 @@ class CausesList(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()
+        context['blog_posts'] = BlogPost.objects.all()[:3]
         return context
 
 
-class CausesDetail(DetailView):
+class CasesDetail(DetailView):
     model = Cause
     template_name = 'app/single-causes.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()
-        context['causes'] = Cause.objects.all()[:5]
+        context_object = context['object']
+        object_description = context_object.description
+        context['cases'] = Cause.objects.exclude(description__exact=object_description)[:5]
+        context['blog_posts'] = BlogPost.objects.all()[:3]
         return context
 
 
-class CauseCreate(FormView):
+class CaseCreate(FormView):
     template_name = 'app/causes_form.html'
     form_class = CausesForm
-    success_url = '/causes'
+    success_url = '/cases'
 
     def form_valid(self, form):
         # This method is called when valid form data has been POSTed.
@@ -71,13 +86,31 @@ class CauseCreate(FormView):
         form.save()
         return super().form_valid(form)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cases'] = Cause.objects.all()[:5]
+        context['blog_posts'] = BlogPost.objects.all()[:3]
+        return context
+
 
 class ContactView(TemplateView):
     template_name = "app/contact.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cases'] = Cause.objects.all()[:5]
+        context['blog_posts'] = BlogPost.objects.all()[:3]
+        return context
+
 
 class FaqView(TemplateView):
     template_name = "app/faq.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cases'] = Cause.objects.all()[:5]
+        context['blog_posts'] = BlogPost.objects.all()[:3]
+        return context
 
 
 class HomepageView(TemplateView):
@@ -85,7 +118,7 @@ class HomepageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['causes'] = Cause.objects.all()[:5]
+        context['cases'] = Cause.objects.all()[:5]
         context['blog_posts'] = BlogPost.objects.all()[:3]
         return context
 
@@ -94,12 +127,30 @@ class LoginView(auth_views.LoginView):
     form_class = LoginForm
     template_name = 'app/log-in.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cases'] = Cause.objects.all()[:5]
+        context['blog_posts'] = BlogPost.objects.all()[:3]
+        return context
+
 
 class RegisterView(generic.CreateView):
     form_class = RegisterForm
     template_name = 'app/sign-up.html'
     success_url = reverse_lazy('login')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cases'] = Cause.objects.all()[:5]
+        context['blog_posts'] = BlogPost.objects.all()[:3]
+        return context
+
 
 class Team(TemplateView):
     template_name = "app/team.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cases'] = Cause.objects.all()[:5]
+        context['blog_posts'] = BlogPost.objects.all()[:3]
+        return context

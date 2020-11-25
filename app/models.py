@@ -1,9 +1,21 @@
+import random
+import string
+import cloudinary
+from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils import timezone
 from django.utils.datetime_safe import datetime
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+
+
+def token_generator(size=4, chars=string.digits):
+    """
+    utility function to generate random identification numbers
+    """
+
+    return "AH" + ''.join(random.choice(string.digits) for x in range(size)) + ''.join(random.choice(string.ascii_uppercase) for x in range(size))
 
 
 class CustomUser(AbstractUser):
@@ -15,10 +27,11 @@ class Cause(models.Model):
     models class for causes
     """
     name = models.CharField(max_length=2000, null=False, blank=False)
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
-    # image =
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
+    image = CloudinaryField('image', null=True, blank=True, max_length=2000)
     description = models.TextField(max_length=5000, blank=True)
     hospital_address = models.CharField(max_length=2000, null=True, blank=False)
+    reference_code = models.CharField(max_length=30, null=True, blank=False)
     target = models.DecimalField(max_digits=8, decimal_places=2)
     donated = models.DecimalField(max_digits=8, decimal_places=2, default=0.00)
     approved = models.BooleanField(default=False)
@@ -45,7 +58,16 @@ class Cause(models.Model):
         """
 
         self.last_updated = datetime.now()
+        self.reference_code = token_generator()
+
         super().save(*args, **kwargs)
+
+    def __unicode__(self):
+        try:
+            public_id = self.image.public_id
+        except AttributeError:
+            public_id = ''
+        return f"Photo {self.name} {public_id}"
 
     def get_absolute_url(self):
         return reverse('cause_detail', args=[str(self.id)])
@@ -81,8 +103,10 @@ class BlogPost(models.Model):
     """
     title = models.CharField(max_length=500, blank=True)
     body = models.CharField(max_length=5000,  blank=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    block_quote = models.CharField(max_length=1000, null=True, blank=False)
+    image = CloudinaryField('image', null=True, blank=True, max_length=2000)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
+    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
     slug = models.CharField(max_length=200, null=True, blank=True)
     date_created = models.DateTimeField(default=timezone.now)
     last_updated = models.DateTimeField(default=timezone.now)
@@ -96,6 +120,13 @@ class BlogPost(models.Model):
         """
         self.last_updated = datetime.now()
         super().save(*args, **kwargs)
+
+    def __unicode__(self):
+        try:
+            public_id = self.image.public_id
+        except AttributeError:
+            public_id = ''
+        return f"Photo {self.title} {public_id}"
 
     def get_absolute_url(self):
         return reverse('blog_detail', args=[str(self.id)])

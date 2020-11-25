@@ -131,42 +131,42 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href={% url 'causes' %}>
-                                        Causes
+                                    <a class="nav-link" href={% url 'cases' %}>
+                                        Cases
 
                                     </a>
                                 </li>
 
 
-                                <li class="nav-item">
-                                    <a  class="nav-link" href={% url 'faq' %}>
-                                        Faq
-                                    </a>
-                                </li>
+{#                                <li class="nav-item">#}
+{#                                    <a  class="nav-link" href={% url 'faq' %}>#}
+{#                                        Faq#}
+{#                                    </a>#}
+{#                                </li>#}
 
 
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        User
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href={% url 'login' %}>
-                                                Log In
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href={% url 'signup' %}>
-                                                Sign Up
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href={% url 'password_reset' %}>
-                                                Recover Password
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
+{#                                <li class="nav-item">#}
+{#                                    <a href="#" class="nav-link">#}
+{#                                        User#}
+{#                                    </a>#}
+{#                                    <ul class="dropdown-menu">#}
+{#                                        <li class="nav-item">#}
+{#                                            <a class="nav-link" href={% url 'login' %}>#}
+{#                                                Log In#}
+{#                                            </a>#}
+{#                                        </li>#}
+{#                                        <li class="nav-item">#}
+{#                                            <a class="nav-link" href={% url 'signup' %}>#}
+{#                                                Sign Up#}
+{#                                            </a>#}
+{#                                        </li>#}
+{#                                        <li class="nav-item">#}
+{#                                            <a class="nav-link" href={% url 'password_reset' %}>#}
+{#                                                Recover Password#}
+{#                                            </a>#}
+{#                                        </li>#}
+{#                                    </ul>#}
+{#                                </li>#}
 
 
                                 <li class="nav-item">
@@ -252,19 +252,10 @@
                             <h3>Our Support</h3>
 
                             <ul class="footer-quick-links">
-                                <li>
-                                    <a href="#">
-                                        Private Policies
-                                    </a>
-                                </li>
+
                                 <li>
                                     <a href="#">
                                         Donate Now
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href={% url "signup" %}>
-                                        Become a Volunteer
                                     </a>
                                 </li>
 
@@ -274,11 +265,6 @@
                                     </a>
                                 </li>
 
-                                <li>
-                                    <a href="#">
-                                        Partnership
-                                    </a>
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -293,61 +279,19 @@
                                         Donate
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#">
-                                        Sponsor
-                                    </a>
-                                </li>
+
                                 <li>
                                     <a href="#">
                                         Fundraise
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#">
-                                        Volunteer
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Partner
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Jobs
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        Form 
-                                    </a>
-                                </li>
+
+
                             </ul>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-footer-widget">
-                            <h3>Recent News</h3>
-
-                            <div class="footer-news">
-                               <a href="single-blog.html">
-                                    <img src="assets/img/footer-news/1.jpg" alt="image">
-                                    <h4>Support about poverty to poor family</h4>
-                                    <span>Poor, 22 January</span>
-                               </a>
-                            </div>
-
-                            <div class="footer-news">
-                               <a href="single-blog.html">
-                                    <img src="assets/img/footer-news/2.jpg" alt="image">
-                                    <h4>Mostly suffered school Boys care</h4>
-                                    <span>Health, 24 February</span>
-                               </a>
-                            </div>
-                        </div>
-                    </div>
+                    {% block footer_blog %}{% endblock %}
                 </div>
             </div>
 
@@ -357,14 +301,14 @@
                         <div class="row align-items-center">
                             <div class="col-lg-4">
                                 <div class="copyright-logo">
-                                    <img src="assets/img/white-logo.png" alt="image">
+                                    <img src={% static "assets/img/glo (2).png"%} alt="image">
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-6">
                                 <p>
-                                    <i class="far fa-copyright"></i> 
-                                    2020 Afford Health. All Rights Reserved
+                                    <i class="far fa-copyright"></i>
+                                    {% now "Y" %}  Afford Health. All Rights Reserved
                                 </p>
                             </div>
 

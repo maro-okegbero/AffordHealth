@@ -3,6 +3,8 @@ settings.py
 """
 
 from pathlib import Path
+
+import cloudinary
 from dotenv import load_dotenv
 import os
 
@@ -20,7 +22,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["875499f4c10a.ngrok.io", '127.0.0.1']
+ALLOWED_HOSTS = ["a5df8eccceea.ngrok.io", '127.0.0.1']
 
 # Application definition
 
@@ -35,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'django_use_email_as_username.apps.DjangoUseEmailAsUsernameConfig',
-    'app.apps.AppConfig'  # newly created app
+    'app',  # newly created app,
+    'cloudinary',
+
 ]
 
 MIDDLEWARE = [
@@ -117,3 +121,10 @@ STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = "app.CustomUser"
 AUTHENTICATION_BACKENDS = ['accounts.backends.EmailBackend']
+
+cloudinary.config(
+    cloud_name=os.getenv("CLOUD_NAME"),
+    api_key=os.getenv("CLOUDINARY_API_KEY"),
+    api_secret=os.getenv("CLOUDINARY_API_SECRET"),
+
+)

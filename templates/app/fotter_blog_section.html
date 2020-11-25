@@ -1,0 +1,19 @@
+{% load static %}
+
+
+<div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h3>Recent News</h3>
+
+                            {% for blog in blog_posts %}
+                                 <div class="footer-news">
+                                    <a href={% url 'blog_detail' blog.pk %}>
+                                        <img style="width: 80px; height: 68px"  src="{{ blog.image.url }}" alt="image">
+                                        <h4>{{ blog.title }}</h4>
+                                        <span>{{ blog.date_created }}</span>
+                                    </a>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>

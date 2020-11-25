@@ -1,6 +1,10 @@
 asgiref==3.2.10
+certifi==2020.11.8
+cloudinary==1.23.0
 Django==3.1.2
 django-use-email-as-username==1.1.1
 python-dotenv==0.14.0
 pytz==2020.1
+six==1.15.0
 sqlparse==0.3.1
+urllib3==1.26.2
