@@ -125,24 +125,7 @@
 {% endblock nav %}
 
 {% block content %}
-        <!-- Start Page Title Area -->
-        <div class="page-title-area">
-            <div class="d-table">
-                <div class="d-table-cell">
-                    <div class="container">
-                        <div class="page-title-content">
-                            <h2>Case Details</h2>
-                            <ul>
-                                <li><a href={% url 'homepage' %}>Home</a></li>
-                                 <li><a href={% url 'cases' %}>Cases</a></li>
-                                <li>Cases Details</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Page Title Area -->
+
 
         <!-- Start Causes Details Area -->
         <section class="causes-details-area ptb-100">
@@ -172,7 +155,9 @@
                                 <h3>{{ object.name }}</h3>
                                 <p>{{ object.description }}</p>
                             </div>
-                            
+
+
+
                             <div class="causes-details-payment">
 								<div class="payment-method">
 									<h3>Fill in the details to make a donation please</h3>
@@ -254,7 +239,7 @@
                                 {% for cause in cases %}
 								<article class="item">
 									<a href="#" class="thumb">
-										<span class="fullimage cover bg1" role="img"></span>
+											<img style="width: 80px; height: 68px"  src="{{ cause.image.url }}" alt="image">
 									</a>
 									<div class="info">
 										<time datetime="2019-06-30">{{ cause.date_created }}</time>

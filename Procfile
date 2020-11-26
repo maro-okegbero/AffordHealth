@@ -1,0 +1,1 @@
+web: gunicorn Afford_Health.wsgi --log-file -

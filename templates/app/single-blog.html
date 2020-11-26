@@ -151,8 +151,8 @@
 
                                 <h3><b>{{ object.title }}</b></h3>
                                 <blockquote class="wp-block-quote">
-                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                                    <cite>Tom Cruise</cite>
+                                    <p>{{ object.block_quote }}</p>
+
                                 </blockquote>
                                 <p>{{ object.body }}</p>
 
@@ -356,100 +356,61 @@
 							<section class="widget widget_huruma_posts_thumb">
 								<h3 class="widget-title">Popular Posts</h3>
 
+                                {% for post in blog_posts %}
 								<article class="item">
-									<a href="#" class="thumb">
-										<span class="fullimage cover bg1" role="img"></span>
+									<a href={% url 'case_detail' post.pk %} class="thumb">
+										<img style="width: 80px; height: 68px"  src="{{ post.image.url }}" alt="image">
 									</a>
 									<div class="info">
-										<time datetime="2019-06-30">June 30, 2020</time>
+										<time datetime="2019-06-30">{{ post.date_created|date:"j M, Y" }}</time>
 										<h4 class="title usmall">
-											<a href="#">Delicate contempt received two yet advanced</a>
+											<a href="#">{{ post.title }}</a>
 										</h4>
 									</div>
 
 									<div class="clear"></div>
 								</article>
+                                {% endfor %}
 
-								<article class="item">
-									<a href="#" class="thumb">
-										<span class="fullimage cover bg2" role="img"></span>
-									</a>
-									<div class="info">
-										<time datetime="2019-06-30">June 30, 2020</time>
-										<h4 class="title usmall">
-											<a href="#">Future Plan & Strategy for Consutruction</a>
-										</h4>
-									</div>
-
-									<div class="clear"></div>
-								</article>
-
-								<article class="item">
-									<a href="#" class="thumb">
-										<span class="fullimage cover bg3" role="img"></span>
-									</a>
-									<div class="info">
-										<time datetime="2019-06-30">June 30, 2020</time>
-										<h4 class="title usmall">
-											<a href="#">Melancholy devonshire alteration</a>
-										</h4>
-									</div>
-
-									<div class="clear"></div>
-								</article>
-								
-								<article class="item">
-									<a href="#" class="thumb">
-										<span class="fullimage cover bg4" role="img"></span>
-									</a>
-									<div class="info">
-										<time datetime="2019-06-30">June 30, 2020</time>
-										<h4 class="title usmall">
-											<a href="#">Delicate contempt received two yet advanced</a>
-										</h4>
-									</div>
-
-									<div class="clear"></div>
-								</article>
 							</section>
 
-							<section class="widget widget_categories">
-								<h3 class="widget-title">Archives</h3>
-
-								<ul>
-									<li><a href="#">May 2020</a></li>
-									<li><a href="#">April 2020</a></li>
-									<li><a href="#">June 2020</a></li>
-									<li><a href="#">julay 2020</a></li>
-									
-								</ul>
-							</section>
+{#							<section class="widget widget_categories">#}
+{#								<h3 class="widget-title">Archives</h3>#}
+{##}
+{#								<ul>#}
+{#									<li><a href="#">May 2020</a></li>#}
+{#									<li><a href="#">April 2020</a></li>#}
+{#									<li><a href="#">June 2020</a></li>#}
+{#									<li><a href="#">julay 2020</a></li>#}
+{#									#}
+{#								</ul>#}
+{#							</section>#}
 							
-							<section class="widget widget_categories">
-								<h3 class="widget-title">Categories</h3>
+{#							<section class="widget widget_categories">#}
+{#								<h3 class="widget-title">Categories</h3>#}
+{##}
+{#								<ul>#}
+{#									<li><a href="#">Educataon (10)</a></li>#}
+{#									<li><a href="#">National (20)</a></li>#}
+{#									<li><a href="#">Sports (10)</a></li>#}
+{#									<li><a href="#">Megazine (12)</a></li>#}
+{#									<li><a href="#">Health (16)</a></li>#}
+{#								</ul>#}
+{#							</section>#}
 
-								<ul>
-									<li><a href="#">Educataon (10)</a></li>
-									<li><a href="#">National (20)</a></li>
-									<li><a href="#">Sports (10)</a></li>
-									<li><a href="#">Megazine (12)</a></li>
-									<li><a href="#">Health (16)</a></li>
-								</ul>
-							</section>
-
-							<section class="widget widget_tag_cloud">
-								<h3 class="widget-title">Tags</h3>
-
-								<div class="tagcloud">
-									<a href="#">Fashion</a>
-									<a href="#">Education</a>
-									<a href="#">Nation</a>
-									<a href="#">Study</a>
-									<a href="#">Health</a>
-									<a href="#">Food</a>
-									<a href="#">Travel</a>
-									<a href="#">Science</a>
-								</div>
+{#							<section class="widget widget_tag_cloud">#}
+{#								<h3 class="widget-title">Tags</h3>#}
+{##}
+{#								<div class="tagcloud">#}
+{#									<a href="#">Fashion</a>#}
+{#									<a href="#">Education</a>#}
+{#									<a href="#">Nation</a>#}
+{#									<a href="#">Study</a>#}
+{#									<a href="#">Health</a>#}
+{#									<a href="#">Food</a>#}
+{#									<a href="#">Travel</a>#}
+{#									<a href="#">Science</a>#}
+{#								</div>#}
 							</section>
 						</aside>
 					</div>

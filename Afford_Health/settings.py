@@ -5,6 +5,7 @@ settings.py
 from pathlib import Path
 
 import cloudinary
+import dj_database_url
 from dotenv import load_dotenv
 import os
 
@@ -20,9 +21,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["a5df8eccceea.ngrok.io", '127.0.0.1']
+ALLOWED_HOSTS = ["3af6323340ea.ngrok.io", '127.0.0.1', '.herokuapp.com']
 
 # Application definition
 
@@ -78,10 +79,16 @@ WSGI_APPLICATION = 'Afford_Health.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'afford_health',
+        'USER': 'postgres',
+        'PASSWORD': os.getenv("DATABASE_PASSWORD"),
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -128,3 +135,6 @@ cloudinary.config(
     api_secret=os.getenv("CLOUDINARY_API_SECRET"),
 
 )
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
