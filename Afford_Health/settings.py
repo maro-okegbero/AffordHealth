@@ -125,6 +125,9 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'app/static')
+
 
 AUTH_USER_MODEL = "app.CustomUser"
 AUTHENTICATION_BACKENDS = ['accounts.backends.EmailBackend']
