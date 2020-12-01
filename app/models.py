@@ -17,7 +17,8 @@ def token_generator(size=4, chars=string.digits):
     utility function to generate random identification numbers
     """
 
-    return "AH" + ''.join(random.choice(string.digits) for x in range(size)) + ''.join(random.choice(string.ascii_uppercase) for x in range(size))
+    return "AH" + ''.join(random.choice(string.digits) for x in range(size)) + ''.join(
+        random.choice(string.ascii_uppercase) for x in range(size))
 
 
 class CustomUser(AbstractUser):
@@ -43,13 +44,13 @@ class Cause(models.Model):
 
     @property
     def percentage_done(self):
-        percent = round((self.donated/self.target) * 100)
+        percent = round((self.donated / self.target) * 100)
 
         return percent
 
     @property
     def share_url(self):
-        return settings.BASE_URL + str(self.id)
+        return settings.BASE_URL + 'cases/' + str(self.id)
 
     @property
     def completed(self):
@@ -108,7 +109,7 @@ class BlogPost(models.Model):
     model class for blog post
     """
     title = models.CharField(max_length=500, blank=True)
-    body = models.TextField(max_length=5000,  blank=True)
+    body = models.TextField(max_length=5000, blank=True)
     block_quote = models.CharField(max_length=1000, null=True, blank=False)
     image = CloudinaryField('image', null=True, blank=True, max_length=2000)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
@@ -122,7 +123,7 @@ class BlogPost(models.Model):
 
     @property
     def share_url(self):
-        return settings.BASE_URL + str(self.id)
+        return settings.BASE_URL + 'blog/' + str(self.id)
 
     def save(self, *args, **kwargs):
         """
