@@ -15,4 +15,5 @@ urlpatterns = [
                 path('login', LoginView.as_view(), name='login'),
                 path('signup', RegisterView.as_view(), name='signup'),
                 path('team', Team.as_view(), name='team'),
+                path('comment', comment_ajax, name='comment'),
 ]

@@ -6,10 +6,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
-{#        <!-- Revolution Slider CSS -->#}
-{#        <link rel="stylesheet" href={% static "assets/revolution/css/settings.css" %}>#}
-{#        <link rel="stylesheet" href={% static "assets/revolution/css/layers.css" %}>#}
-{#        <link rel="stylesheet" href={% static "assets/revolution/css/navigation.css" %}>#}
+        <!-- Revolution Slider CSS -->
+        <link rel="stylesheet" href={% static "assets/revolution/css/settings.css" %}>
+        <link rel="stylesheet" href={% static "assets/revolution/css/layers.css" %}>
+        <link rel="stylesheet" href={% static "assets/revolution/css/navigation.css" %}>
 
         <!-- Bootstrap CSS --> 
         <link rel="stylesheet" href={% static "assets/css/bootstrap.min.css" %}>
@@ -229,11 +229,11 @@
                                 <span>2, Wellington Boulevard<br> VI, Lagos</span>
                             </div>
 
-                            <div class="footer-info-contact">
-                                <i class="flaticon-call"></i>
-                                <h3>Call Us</h3>
-                                <span><a href="tel:08138931117">08138931117</a></span>
-                            </div>
+{#                            <div class="footer-info-contact">#}
+{#                                <i class="flaticon-call"></i>#}
+{#                                <h3>Call Us</h3>#}
+{#                                <span><a href="tel:08138931117">08138931117</a></span>#}
+{#                            </div>#}
 
                             <div class="footer-info-contact">
                                 <i class="flaticon-email"></i>
@@ -380,6 +380,9 @@
         <script src={% static "assets/revolution/js/extensions/revolution.extension.slideanims.min.js" %}></script>
         <script src={% static "assets/revolution/js/extensions/revolution.extension.video.min.js" %}></script>
         <script src={% static "assets/js/rev-slider-custom.js" %}></script>
+
+                {% block javascript%}
+                    {% endblock %}
 
     </body>
 </html>

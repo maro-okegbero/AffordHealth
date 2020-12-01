@@ -158,6 +158,27 @@
 
 
 
+                                    <ul class="share_buttons">
+                                        <li><span>Share:</span></li>
+                                        <li>
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ object.share_url }}" target="_blank">
+                                                <i class="flaticon-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://twitter.com/intent/tweet?url={{ object.share_url }}&text={{ object.description|truncatechars:20 }}" target="_blank">
+                                                <i class="flaticon-twitter"></i>
+                                            </a>
+                                        </li>
+{#                                        <li>#}
+{#                                            <a href="#" target="_blank">#}
+{#                                                <i class="flaticon-instagram"></i>#}
+{#                                            </a>#}
+{#                                        </li>#}
+                                    </ul>
+
+
+
                             <div class="causes-details-payment">
 								<div class="payment-method">
 									<h3>Fill in the details to make a donation please</h3>

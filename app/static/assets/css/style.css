@@ -2962,6 +2962,13 @@ Mission Area CSS
   display: inline-block;
 }
 
+.share_buttons{
+  padding-top: 10px;
+}
+.share_buttons li{
+  display: inline;
+  padding-right: 13px;
+}
 .mission-tab .mission-list-tab .tabs li.current {
   border-bottom: 2px solid #ff6015;
 }
@@ -6011,6 +6018,30 @@ Causes Details Area Style
   display: block;
   width: 100%;
 }
+
+.causes-details-desc .article-footer {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.causes-details-desc .article-footer .article-share {
+  -ms-flex: 0 0 50%;
+  -webkit-box-flex: 0;
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.causes-details-desc .article-footer .article-share .social {
+  padding-left: 0;
+  list-style-type: none;
+  text-align: right;
+  margin-bottom: 0;
+}
+
 
 /*================================================
 Sidebar Widget Area Style

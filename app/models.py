@@ -9,6 +9,8 @@ from django.utils.datetime_safe import datetime
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
+from Afford_Health import settings
+
 
 def token_generator(size=4, chars=string.digits):
     """
@@ -44,6 +46,10 @@ class Cause(models.Model):
         percent = round((self.donated/self.target) * 100)
 
         return percent
+
+    @property
+    def share_url(self):
+        return settings.BASE_URL + str(self.id)
 
     @property
     def completed(self):
@@ -102,7 +108,7 @@ class BlogPost(models.Model):
     model class for blog post
     """
     title = models.CharField(max_length=500, blank=True)
-    body = models.CharField(max_length=5000,  blank=True)
+    body = models.TextField(max_length=5000,  blank=True)
     block_quote = models.CharField(max_length=1000, null=True, blank=False)
     image = CloudinaryField('image', null=True, blank=True, max_length=2000)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
@@ -113,6 +119,10 @@ class BlogPost(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def share_url(self):
+        return settings.BASE_URL + str(self.id)
 
     def save(self, *args, **kwargs):
         """
@@ -137,7 +147,9 @@ class Comment(models.Model):
     model class for comments in a blog post
     """
     body = models.CharField(max_length=1000, null=False, blank=True)
-    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    name = models.CharField(max_length=300, null=False, blank=False)
+    email = models.CharField(max_length=300, null=False, blank=False)
+    # author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     # replies = models.ForeignKey('self', on_delete=models.CASCADE)
     blog_post = models.ForeignKey(BlogPost, related_name="comments", on_delete=models.CASCADE)
 

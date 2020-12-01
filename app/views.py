@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.views.generic import CreateView, FormView
 from django.views.generic.base import TemplateView
 from django.db.models import Q
@@ -154,3 +155,32 @@ class Team(TemplateView):
         context['cases'] = Cause.objects.all()[:5]
         context['blog_posts'] = BlogPost.objects.all()[:3]
         return context
+
+
+def comment_ajax(request):
+    """
+    comment on a blogpost
+    :param request:
+    :return:
+    """
+    if request.is_ajax:
+        print("HELlo========================================")
+        name = request.GET.get("name")
+        body = request.GET.get("body")
+        email = request.GET.get("email")
+        blog_id = request.GET.get("blog_id")
+        data = {}
+
+        if name and body and email and blog_id:
+            print("YESSSSSSSS========================================")
+            try:
+                blog = BlogPost.objects.get(pk=blog_id)
+                comment = Comment.objects.create(name=name, body=body, email=email, blog=blog)
+                data = {"success": True, "message": "comment was created successfully"}
+            except (BlogPost.DoesNotExist, Exception) as e:
+                data = {"success": False, "message": e}
+
+            return JsonResponse(data)
+        print("Nooooooooooooooooooooooooooo=--=====================")
+
+

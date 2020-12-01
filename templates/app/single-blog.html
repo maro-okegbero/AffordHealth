@@ -164,12 +164,12 @@
                                     <ul class="social">
                                         <li><span>Share:</span></li>
                                         <li>
-                                            <a href="https://www.facebook.com/sharer/sharer.php?u=https://affordhealth.ng" target="_blank">
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ object.share_url}}" target="_blank">
                                                 <i class="flaticon-facebook"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://twitter.com/intent/tweet?url=https://affordhealth.ng&text=Afford Health is an NGO focused on solving health unaffordabilty in Nigeria. Come partner with us!" target="_blank">
+                                            <a href="https://twitter.com/intent/tweet?url={{ object.share_url }}&text={{ object.title }}" target="_blank">
                                                 <i class="flaticon-twitter"></i>
                                             </a>
                                         </li>
@@ -303,7 +303,7 @@
 
                                 <div class="comment-respond">
                                     <h3 class="comment-reply-title">Leave a Reply</h3>
-                                    <form class="comment-form">
+                                    <form class="comment-form" id="comment-form">
                                         <p class="comment-notes">
                                             <span id="email-notes">Your email address will not be published.</span>
                                             Required fields are marked 
@@ -321,16 +321,14 @@
                                             <label>Email <span class="required">*</span></label>
                                             <input type="email" id="email" name="email" required="required">
                                         </p>
-                                        <p class="comment-form-url">
-                                            <label>Website</label>
-                                            <input type="url" id="url" name="url">
+
+                                        <p class="comment-form-post">
+
+                                            <input type="hidden" id="post" name="post" required="required" value={{ blogpost.pk }}>
                                         </p>
-                                        <p class="comment-form-cookies-consent">
-                                            <input type="checkbox" value="yes" name="wp-comment-cookies-consent" id="wp-comment-cookies-consent">
-                                            <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label>
-                                        </p>
+
                                         <p class="form-submit">
-                                            <input type="submit" name="submit" id="submit" class="submit" value="Post A Comment">
+                                            <input type="submit" name="submit" id="submit" onsubmit="submitComment()" class="submit" value="Post A Comment">
                                         </p>
                                     </form>
                                 </div>
@@ -340,18 +338,18 @@
 
                     <div class="col-lg-4 col-md-12">
 						<aside class="widget-area" id="secondary">
-							<div class="widget widget_search">
-								<form class="search-form">
-									<label>
-										<span class="screen-reader-text">Search for:</span>
-										<input type="search" class="search-field" placeholder="Search...">
-                                    </label>
-                                    
-									<button type="submit">
-                                        <i class="flaticon-search"></i>
-                                    </button>
-								</form>
-							</div>
+{#							<div class="widget widget_search">#}
+{#								<form class="search-form">#}
+{#									<label>#}
+{#										<span class="screen-reader-text">Search for:</span>#}
+{#										<input type="search" class="search-field" placeholder="Search...">#}
+{#                                    </label>#}
+{#                                    #}
+{#									<button type="submit">#}
+{#                                        <i class="flaticon-search"></i>#}
+{#                                    </button>#}
+{#								</form>#}
+{#							</div>#}
 
 							<section class="widget widget_huruma_posts_thumb">
 								<h3 class="widget-title">Popular Posts</h3>
@@ -403,7 +401,7 @@
 {##}
 {#								<div class="tagcloud">#}
 {#									<a href="#">Fashion</a>#}
-{#									<a href="#">Education</a>#}
+{#								<a href="#">Education</a>#}
 {#									<a href="#">Nation</a>#}
 {#									<a href="#">Study</a>#}
 {#									<a href="#">Health</a>#}
@@ -411,7 +409,8 @@
 {#									<a href="#">Travel</a>#}
 {#									<a href="#">Science</a>#}
 {#								</div>#}
-							</section>
+
+
 						</aside>
 					</div>
                 </div>
@@ -424,3 +423,40 @@
 {% block footer_blog %}
 {% include 'app/fotter_blog_section.html' %}
 {% endblock footer_blog %}
+
+{% block javascript %}
+
+<script>
+
+    function submitComment() {
+        var name = $('#name').val();
+        var email = $('#email').val();
+        var comment = $('#comment').val();
+        var post = $('#post').val();
+        console.log("I got here===============")
+
+        $.ajax({
+            url: '{% url 'comment' %}',
+            data:{
+                'name':name,
+                'email':email,
+                'body':comment,
+                'blog_id':post
+                },
+                dataType:'json',
+
+                success: function (data) {
+                if (data.success) {
+
+
+                }else{
+
+
+                }
+            }
+        });
+
+    }
+</script>
+
+{% endblock %}
