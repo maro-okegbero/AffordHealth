@@ -114,6 +114,16 @@ class FaqView(TemplateView):
         return context
 
 
+class PrivacyPolicyView(TemplateView):
+    template_name = "app/privacy-policy.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cases'] = Cause.objects.all()[:5]
+        context['blog_posts'] = BlogPost.objects.all()[:3]
+        return context
+
+
 class HomepageView(TemplateView):
     template_name = 'app/index.html'
 
@@ -182,5 +192,3 @@ def comment_ajax(request):
 
             return JsonResponse(data)
         print("Nooooooooooooooooooooooooooo=--=====================")
-
-

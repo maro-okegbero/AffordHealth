@@ -12,6 +12,7 @@ urlpatterns = [
                 path('cases/submit', CaseCreate.as_view(), name='submit_case'),
                 path('cases/<pk>', CasesDetail.as_view(), name='case_detail'),
                 path('faq', FaqView.as_view(), name='faq'),
+                path('privacy_policy', PrivacyPolicyView.as_view(), name='policy'),
                 path('login', LoginView.as_view(), name='login'),
                 path('signup', RegisterView.as_view(), name='signup'),
                 path('team', Team.as_view(), name='team'),
