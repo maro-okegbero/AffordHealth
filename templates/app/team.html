@@ -7,7 +7,7 @@
             <div class="huruma-responsive-nav">
                 <div class="container">
                     <div class="huruma-responsive-menu">
-                        <div class="logo">
+                         <div class="logo">
                             <a href={% url 'homepage' %}>
 {#                                <img class="white-logo" alt="logo" src={% static "assets/img/logo.png" %} >#}
 {#                                <img class="black-logo" alt="image" src={% static "assets/img/logo-2.png" %} >#}
@@ -41,12 +41,16 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href={% url 'cases' %}>
-                                        cases
-
+                                    <a class="nav-link "  href={% url 'login' %}>
+                                        Login
                                     </a>
                                 </li>
 
+                                <li class="nav-item">
+                                    <a class="nav-link" href={% url 'cases' %}>
+                                        Cases
+                                    </a>
+                                </li>
 
 
                                 <li class="nav-item">
@@ -355,3 +359,8 @@
         <!-- End Instagram Area -->
 
 {% endblock %}
+
+
+{% block footer_blog %}
+ {% include 'app/fotter_blog_section.html' %}
+{% endblock footer_blog %}
