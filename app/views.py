@@ -1,15 +1,21 @@
-from django.http import JsonResponse
-from django.views.generic import CreateView, FormView
-from django.views.generic.base import TemplateView
+from django import forms
+from django.contrib.auth.decorators import login_required
+from django.forms import modelform_factory
+from django.http import JsonResponse, HttpResponseRedirect
+from django.shortcuts import render
+from django.utils.decorators import method_decorator
+from django.views.generic.edit import CreateView, FormView
+from django.views.generic.base import TemplateView, View
+from django.views import View
 from django.db.models import Q
 from app.forms import CausesForm
 from app.models import *
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-from django.contrib.auth import views as auth_views
+from django.contrib.auth import views as auth_views, authenticate, login
 from django.views import generic
 from django.urls import reverse_lazy
-from accounts.forms import LoginForm, RegisterForm
+from accounts.forms import LoginForm, BootstrapModelForm, RegisterForm
 
 
 class AboutView(TemplateView):
@@ -57,6 +63,42 @@ class CasesList(ListView):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()
         context['blog_posts'] = BlogPost.objects.all()[:3]
+        try:
+            approved = Cause.objects.filter(approved=True)
+        except Exception as e:
+            approved = []
+
+        context['page_obj'] = approved
+        print(approved)
+
+        return context
+
+
+@method_decorator(login_required, name='dispatch')
+class PersonalCasesList(ListView):
+    template_name = 'app/personal_causes.html'
+    model = Cause
+    paginate_by = 6
+
+    def get_context_data(self, **kwargs):
+        user = self.request.user
+        context = super().get_context_data(**kwargs)
+        context['now'] = timezone.now()
+        context['blog_posts'] = BlogPost.objects.all()[:3]
+
+        try:
+            approved = Cause.objects.filter(user=user, approved=True)
+        except Exception as e:
+            approved = []
+
+        try:
+            unapproved = Cause.objects.get(user=user, approved=True)
+        except Exception as e:
+            unapproved = []
+
+        context['approved'] = approved
+        context['unapproved'] = unapproved
+        print(user)
         return context
 
 
@@ -74,6 +116,7 @@ class CasesDetail(DetailView):
         return context
 
 
+@method_decorator(login_required, name='dispatch')
 class CaseCreate(FormView):
     template_name = 'app/causes_form.html'
     form_class = CausesForm
@@ -81,7 +124,6 @@ class CaseCreate(FormView):
 
     def form_valid(self, form):
         # This method is called when valid form data has been POSTed.
-        # It should return an HttpResponse.
         form.send_email()
         form.user = self.request.user
         form.save()
@@ -134,27 +176,58 @@ class HomepageView(TemplateView):
         return context
 
 
-class LoginView(auth_views.LoginView):
+class LoginView(View):
     form_class = LoginForm
     template_name = 'app/log-in.html'
+    success_url = reverse_lazy('personal_cases')
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def get(self, request, *args, **kwargs):
+        context = dict()
         context['cases'] = Cause.objects.all()[:5]
         context['blog_posts'] = BlogPost.objects.all()[:3]
-        return context
+        context['form'] = self.form_class()
+        return render(request, self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password')
+            merchant = authenticate(username=username, password=raw_password)
+            login(request, merchant)
+
+            return HttpResponseRedirect('/personal_cases')
+
+        return render(request, self.template_name, {'form': form})
 
 
-class RegisterView(generic.CreateView):
+class RegisterView(View):
     form_class = RegisterForm
     template_name = 'app/sign-up.html'
-    success_url = reverse_lazy('login')
+    success_url = reverse_lazy('personal_cases')
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def get(self, request, *args, **kwargs):
+        context = dict()
         context['cases'] = Cause.objects.all()[:5]
         context['blog_posts'] = BlogPost.objects.all()[:3]
-        return context
+        form = self.form_class()
+        context['form'] = form
+        print(context, "context..........")
+        return render(request, self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            merchant = authenticate(username=username, password=raw_password)
+            login(request, merchant)
+
+            return HttpResponseRedirect('/personal_cases')
+
+        return render(request, self.template_name, {'form': form})
 
 
 class Team(TemplateView):

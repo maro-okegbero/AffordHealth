@@ -9,6 +9,7 @@ urlpatterns = [
                 path('blog', BlogListView.as_view(), name='blog'),
                 path('blog/<pk>', BlogDetailView.as_view(), name='blog_detail'),
                 path('cases', CasesList.as_view(), name='cases'),
+                path('personal_cases', PersonalCasesList.as_view(), name='personal_cases'),
                 path('cases/submit', CaseCreate.as_view(), name='submit_case'),
                 path('cases/<pk>', CasesDetail.as_view(), name='case_detail'),
                 path('faq', FaqView.as_view(), name='faq'),
