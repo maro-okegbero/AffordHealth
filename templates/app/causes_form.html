@@ -40,11 +40,27 @@
                                     </a>
                                 </li>
 
-                                <li class="nav-item">
-                                    <a class="nav-link active" href={% url 'cases' %}>
-                                        Causes
-
+                                  <li class="nav-item active">
+                                    <a class="nav-link " href=#>
+                                        Cases
                                     </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href={% url 'submit_case' %}>
+                                                 Submit a Case
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href={% url 'cases' %}>
+                                                Active Cases
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href={% url 'personal_cases' %}>
+                                                 Personal Cases
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
 
 
@@ -159,14 +175,14 @@
                             <div class="info-contact">
                                 <i class="flaticon-virtual-reality-glasses"></i>
                                 <h3>Review</h3>
-                                <span>Our Team reviews the cause to confirm the validity of the claims</span>
+                                <span>Our Team reviews the case to confirm the validity of the claims</span>
                             </div>
 
                             <div class="info-contact">
                                 <i class="flaticon-confirmation"></i>
                                 <h3>Confirmation</h3>
                                 <span>
-                                    If the all checks out the user is contacted and the cause is approved and uploaded and donations can be made.
+                                    If the all checks out the user is contacted and the case is approved and uploaded and donations can be made.
                                 </span>
                             </div>
 
@@ -174,7 +190,7 @@
                                 <i class="flaticon-testimonial"></i>
                                 <h3>Target Reached</h3>
                                 <span>
-                                    When the Target amount is reached the cause is closed and donations cease. The user is then contacted and the money is immediately transferred.
+                                    When the Target amount is reached the case is closed and donations cease. The user is then contacted and the money is immediately transferred.
                                 </span>
                             </div>
 
