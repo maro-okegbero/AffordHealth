@@ -8,7 +8,7 @@ from django.utils import timezone
 from django.utils.datetime_safe import datetime
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-
+from django_quill.fields import QuillField
 from Afford_Health import settings
 
 
@@ -109,7 +109,7 @@ class BlogPost(models.Model):
     model class for blog post
     """
     title = models.CharField(max_length=500, blank=True)
-    body = models.TextField(max_length=5000, blank=True)
+    body = QuillField()
     block_quote = models.CharField(max_length=1000, null=True, blank=False)
     image = CloudinaryField('image', null=True, blank=True, max_length=2000)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
@@ -148,8 +148,8 @@ class Comment(models.Model):
     model class for comments in a blog post
     """
     body = models.CharField(max_length=1000, null=False, blank=True)
-    name = models.CharField(max_length=300, null=False, blank=False)
-    email = models.CharField(max_length=300, null=False, blank=False)
+    name = models.CharField(max_length=300, null=False, blank=False, default="foo")
+    email = models.CharField(max_length=300, null=False, blank=False, default="foo@gmail.com")
     # author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     # replies = models.ForeignKey('self', on_delete=models.CASCADE)
     blog_post = models.ForeignKey(BlogPost, related_name="comments", on_delete=models.CASCADE)

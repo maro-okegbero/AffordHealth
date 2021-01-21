@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django_use_email_as_username.apps.DjangoUseEmailAsUsernameConfig',
     'app',  # newly created app,
     'cloudinary',
+    'django_quill',
 
 ]
 
