@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, authenticate, login
 from django import forms
 from django.forms import ModelForm
 
@@ -32,5 +32,16 @@ class RegisterForm(UserCreationForm):
         fields = ('email', 'username', 'password1', 'password2')
 
 
-class LoginForm(AuthenticationForm):
-    username = forms.CharField(label='Email / Username')
+class LoginForm(forms.Form):
+    username = forms.CharField(label='Email / Username', widget=forms.TextInput(attrs={'class': 'form-control',
+                                                                                       'placeholder': 'Username', }))
+    password = forms.CharField(label='password', widget=forms.PasswordInput(attrs={'class': 'form-control',
+                                                                                   'placeholder': 'Password', }))
+
+    def login_user(self, request, username, password):
+        print(self)
+        merchant = authenticate(username=username, password=password)
+        if merchant:
+            login(request, merchant)
+            return True
+        return False

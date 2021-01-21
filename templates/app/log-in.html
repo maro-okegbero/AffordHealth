@@ -127,16 +127,19 @@
                     </div>
                         
                     <form action="#" method="POST" enctype="multipart/form-data">
+
                         <div class="row">
+                            {% csrf_token %}
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email">
+                                    <span style="color: red">{{ errors }}</span>
+                                    {{ form.username }}
                                 </div>
                             </div>
 
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Password">
+                                    {{ form.password}}
                                 </div>
                             </div>
 
@@ -153,10 +156,7 @@
 
                             <div class="col-lg-12">
                                 <div class="send-btn">
-                                    <a href="#" class="default-btn">
-                                        Login Now
-                                        <span></span>
-                                    </a>
+                                    <input type="submit" value="Login" class="default-btn">
                                 </div>
                                 <br>
                                 <span>Don't have account? <a href={% url 'signup' %}>Signup!</a></span>

@@ -12,7 +12,7 @@ from app.forms import CausesForm
 from app.models import *
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-from django.contrib.auth import views as auth_views, authenticate, login
+from django.contrib.auth import views as auth_views, authenticate, login, logout
 from django.views import generic
 from django.urls import reverse_lazy
 from accounts.forms import LoginForm, BootstrapModelForm, RegisterForm
@@ -190,16 +190,23 @@ class LoginView(View):
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
+        context = dict()
+        context['cases'] = Cause.objects.all()[:5]
+        context['blog_posts'] = BlogPost.objects.all()[:3]
+        context['form'] = form
         if form.is_valid():
-            form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password')
             merchant = authenticate(username=username, password=raw_password)
-            login(request, merchant)
+            if merchant:
+                login(request, merchant)
+                return HttpResponseRedirect('/personal_cases')
+            else:
+                context['errors'] = "The username or password is wrong"
+                logout(request)
+                return render(request, self.template_name, context)
 
-            return HttpResponseRedirect('/personal_cases')
-
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name,context)
 
 
 class RegisterView(View):
