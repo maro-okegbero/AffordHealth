@@ -13,8 +13,8 @@
                     <div class="huruma-responsive-menu">
                         <div class="logo">
                             <a href={% url 'homepage' %}>
-{#                                <img class="white-logo" alt="logo" src={% static "assets/img/logo.png" %} >#}
-{#                                <img class="black-logo" alt="image" src={% static "assets/img/logo-2.png" %} >#}
+                                <img class="white-logo" alt="logo" src={% static "assets/img/new_logo.png" %} >
+                                <img class="black-logo" alt="image" src={% static "assets/img/new_logo.png" %} >
                             </a>
                         </div>
                     </div>
@@ -25,8 +25,8 @@
                 <div class="container">
                     <nav class="navbar navbar-expand-md navbar-light">
                         <a class="navbar-brand" href={% url 'homepage' %}>
-{#                            <img class="white-logo" alt="logo" src={% static "assets/img/logo.png"%} >#}
-{#                            <img class="black-logo" alt="image" src={% static "assets/img/logo-2.png" %} >#}
+                            <img class="white-logo" alt="logo" src={% static "assets/img/new_logo.png"%} >
+                            <img class="black-logo" alt="image" src={% static "assets/img/new_logo.png" %} >
                         </a>
 
                         <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
@@ -44,11 +44,27 @@
                                     </a>
                                 </li>
 
-                                <li class="nav-item">
-                                    <a class="nav-link" href={% url 'cases' %}>
+                              <li class="nav-item">
+                                    <a class="nav-link " href=#>
                                         Cases
-
                                     </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href={% url 'submit_case' %}>
+                                                 Submit a Case
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href={% url 'cases' %}>
+                                                Active Cases
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href={% url 'personal_cases' %}>
+                                                 Personal Cases
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
 
 
