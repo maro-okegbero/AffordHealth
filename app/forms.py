@@ -3,6 +3,7 @@ from app.models import *
 from django import forms
 
 
+
 class CausesForm(ModelForm):
     name = forms.CharField(max_length=2000, required=True, label="Name",
                            widget=forms.TextInput(attrs={'id': 'name', 'name': 'name', 'class': "form-control",
@@ -49,3 +50,27 @@ class CausesForm(ModelForm):
     def send_email(self):
         # send email using the self.cleaned_data dictionary
         return
+
+
+class CommentForm(ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['body', 'name', 'email', 'blog_post']
+        widgets = {
+            'body': forms.TextInput(attrs={
+                'id': 'post-body',
+                'required': True,
+                'placeholder': 'Say something...'
+            }),
+            'name': forms.TextInput(attrs={
+                'id': 'post-name',
+                'required': True,
+                'placeholder': 'Say something...'}),
+            'email': forms.TextInput(attrs={
+                'id': 'post-text',
+                'required': True,
+                'placeholder': 'Say something...'
+        })
+        }
+
+

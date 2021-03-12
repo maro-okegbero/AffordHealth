@@ -163,3 +163,10 @@ class Comment(models.Model):
         """
         self.last_updated = datetime.now()
         super().save(*args, **kwargs)
+
+#
+# class CustomerInfo(models.Model):
+#     full_name = models.CharField(max_length=150)
+#     email = models.EmailField()
+#     phone_number = models.CharField(max_length=20)
+#     address = models.CharField(max_length=150)

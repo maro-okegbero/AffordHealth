@@ -102,18 +102,31 @@ class PersonalCasesList(ListView):
         return context
 
 
-class CasesDetail(DetailView):
+class CasesDetail(View):
     model = Cause
     template_name = 'app/single-causes.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def get(self, request, pk, *args, **kwargs):
+        context = dict()
+        print(args, "hello this args=====")
         context['now'] = timezone.now()
+        context['object'] = Cause.objects.get(pk=pk)
         context_object = context['object']
         object_description = context_object.description
         context['cases'] = Cause.objects.exclude(description__exact=object_description)[:5]
         context['blog_posts'] = BlogPost.objects.all()[:3]
-        return context
+        return render(request, self.template_name, context)
+
+    def post(self, request, pk, *args, **kwargs):
+        context = dict()
+        print(args, "hello this args=====")
+        context['now'] = timezone.now()
+        context['object'] = Cause.objects.get(pk=pk)
+        context_object = context['object']
+        object_description = context_object.description
+        context['cases'] = Cause.objects.exclude(description__exact=object_description)[:5]
+        context['blog_posts'] = BlogPost.objects.all()[:3]
+        return render(request, self.template_name, context)
 
 
 @method_decorator(login_required, name='dispatch')
@@ -206,7 +219,7 @@ class LoginView(View):
                 logout(request)
                 return render(request, self.template_name, context)
 
-        return render(request, self.template_name,context)
+        return render(request, self.template_name, context)
 
 
 class RegisterView(View):

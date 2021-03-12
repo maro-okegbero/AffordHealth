@@ -318,7 +318,8 @@
 
                                 <div class="comment-respond">
                                     <h3 class="comment-reply-title">Leave a Reply</h3>
-                                    <form class="comment-form" id="comment-form">
+                                    <form action="/create_post/" method="POST" id="post-form">
+                                        {% csrf_token %}
                                         <p class="comment-notes">
                                             <span id="email-notes">Your email address will not be published.</span>
                                             Required fields are marked 

@@ -147,3 +147,6 @@ LOGIN_URL = 'login'
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+
+PAYSTACK_PUBLIC_KEY = os.getenv("PAYSTACK_PUBLIC_KEY")
+PAYSTACK_SCRET_KEY = os.getenv("PAYSTACK_SCRET_KEY")

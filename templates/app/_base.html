@@ -54,42 +54,42 @@
 {#        </div>#}
         <!-- End Preloader Area -->
 
-        <!-- Start Header Area -->
-        <div class="header-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="header-content">
-                            <p>
-                                <a href="#">One Life IS Worth A Fortune... <span>Donate Now</span></a>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="top-header-social">
-                            <span>Follow us:</span>
-                            <a href="https://m.facebook.com/Afford-Health-Ng-100275905164459/" target="_blank">
-                                <i class='flaticon-facebook'></i>
-                            </a>
-
-                            <a href="https://m.facebook.com/Afford-Health-Ng-100275905164459/" target="_blank">
-                                <i class='flaticon-twitter'></i>
-                            </a>
-
-                            <a href="https://msng.link/o/?aff.health=ig" target="_blank">
-                                <i class='flaticon-instagram'></i>
-                            </a>
-
+{#        <!-- Start Header Area -->#}
+{#        <div class="header-section">#}
+{#            <div class="container">#}
+{#                <div class="row">#}
+{#                    <div class="col-lg-6">#}
+{#                        <div class="header-content">#}
+{#                            <p>#}
+{#                                <a href="#">One Life IS Worth A Fortune... <span>Donate Now</span></a>#}
+{#                            </p>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="col-lg-6">#}
+{#                        <div class="top-header-social">#}
+{#                            <span>Follow us:</span>#}
+{#                            <a href="https://m.facebook.com/Afford-Health-Ng-100275905164459/" target="_blank">#}
+{#                                <i class='flaticon-facebook'></i>#}
+{#                            </a>#}
+{##}
+{#                            <a href="https://m.facebook.com/Afford-Health-Ng-100275905164459/" target="_blank">#}
+{#                                <i class='flaticon-twitter'></i>#}
+{#                            </a>#}
+{##}
+{#                            <a href="https://msng.link/o/?aff.health=ig" target="_blank">#}
+{#                                <i class='flaticon-instagram'></i>#}
+{#                            </a>#}
+{##}
 {#                            <a href="#" target="_blank">#}
 {#                                <i class='flaticon-linkedin'></i>#}
 {#                            </a>#}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Header Area -->
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <!-- End Header Area -->#}
 
         <!-- Start Navbar Area -->
         {% block nav %}
@@ -99,8 +99,8 @@
                     <div class="huruma-responsive-menu">
                         <div class="logo">
                             <a href={% url 'homepage' %}>
-                                <img class="white-logo" alt="logo" src={% static "assets/img/icon/transparent_logo.png" %} >
-                                <img class="black-logo" alt="image" src={% static "assets/img/icon/transparent_logo.png" %} >
+                                <img class="white-logo" alt="logo" src={% static "assets/img/icon/ah@4x.png" %} >
+                                <img class="black-logo" alt="image" src={% static "assets/img/icon/ah@4x.png" %} >
                             </a>
                         </div>
                     </div>
@@ -302,7 +302,7 @@
                         <div class="row align-items-center">
                             <div class="col-lg-4">
                                 <div class="copyright-logo">
-                                    <img src={% static "assets/img/icon/transparent_logo.png"%} alt="image">
+                                    <img src={% static "assets/img/icon/ah@4x.png"%} alt="image">
                                 </div>
                             </div>
 
@@ -381,6 +381,7 @@
         <script src={% static "assets/revolution/js/extensions/revolution.extension.slideanims.min.js" %}></script>
         <script src={% static "assets/revolution/js/extensions/revolution.extension.video.min.js" %}></script>
         <script src={% static "assets/js/rev-slider-custom.js" %}></script>
+        <script src="https://js.paystack.co/v1/inline.js"></script>
 
                 {% block javascript%}
                     {% endblock %}

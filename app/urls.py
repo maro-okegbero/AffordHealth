@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from app.views import *
 
+
 urlpatterns = [
                 path('', HomepageView.as_view(), name='homepage'),
                 path('about', AboutView.as_view(), name='about'),
@@ -18,4 +19,5 @@ urlpatterns = [
                 path('signup', RegisterView.as_view(), name='signup'),
                 path('team', Team.as_view(), name='team'),
                 path('comment', comment_ajax, name='comment'),
+
 ]
