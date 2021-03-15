@@ -32,6 +32,7 @@ class AboutView(TemplateView):
         context['cases_nav'] = ""
         context['user_nav'] = ""
         context['contact_nav'] = ""
+        context['team_nav'] = ""
 
         return context
 
@@ -51,6 +52,7 @@ class BlogListView(ListView):
         context['cases_nav'] = ""
         context['user_nav'] = ""
         context['contact_nav'] = ""
+        context['team_nav'] = ""
         return context
 
 
@@ -70,6 +72,7 @@ class BlogDetailView(DetailView):
         context['cases_nav'] = ""
         context['user_nav'] = ""
         context['contact_nav'] = ""
+        context['team_nav'] = ""
         return context
 
 
@@ -88,6 +91,7 @@ class CasesList(ListView):
         context['cases_nav'] = "active"
         context['user_nav'] = ""
         context['contact_nav'] = ""
+        context['team_nav'] = ""
         try:
             approved = Cause.objects.filter(approved=True)
         except Exception as e:
@@ -116,6 +120,7 @@ class PersonalCasesList(ListView):
         context['cases_nav'] = "active"
         context['user_nav'] = ""
         context['contact_nav'] = ""
+        context['team_nav'] = ""
 
         try:
             approved = Cause.objects.filter(user=user, approved=True)
@@ -152,6 +157,7 @@ class CasesDetail(View):
         context['cases_nav'] = "active"
         context['user_nav'] = ""
         context['contact_nav'] = ""
+        context['team_nav'] = ""
         return render(request, self.template_name, context)
 
     def post(self, request, pk, *args, **kwargs):
@@ -169,6 +175,7 @@ class CasesDetail(View):
         context['cases_nav'] = "active"
         context['user_nav'] = ""
         context['contact_nav'] = ""
+        context['team_nav'] = ""
         return render(request, self.template_name, context)
 
 
@@ -195,6 +202,7 @@ class CaseCreate(FormView):
         context['cases_nav'] = "active"
         context['user_nav'] = ""
         context['contact_nav'] = ""
+        context['team_nav'] = ""
         return context
 
 
@@ -211,6 +219,7 @@ class ContactView(TemplateView):
         context['cases_nav'] = ""
         context['user_nav'] = ""
         context['contact_nav'] = "active"
+        context['team_nav'] = ""
         return context
 
 
@@ -227,6 +236,7 @@ class FaqView(TemplateView):
         context['cases_nav'] = ""
         context['user_nav'] = ""
         context['contact_nav'] = ""
+        context['team_nav'] = ""
         return context
 
 
@@ -253,6 +263,7 @@ class HomepageView(TemplateView):
         context['cases_nav'] = ""
         context['user_nav'] = ""
         context['contact_nav'] = ""
+        context['team_nav'] = ""
         return context
 
 
@@ -272,6 +283,7 @@ class LoginView(View):
         context['cases_nav'] = ""
         context['user_nav'] = "active"
         context['contact_nav'] = ""
+        context['team_nav'] = ""
         return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
@@ -286,6 +298,7 @@ class LoginView(View):
         context['cases_nav'] = ""
         context['user_nav'] = "active"
         context['contact_nav'] = ""
+        context['team_nav'] = ""
         if form.is_valid():
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password')
@@ -318,6 +331,7 @@ class RegisterView(View):
         context['cases_nav'] = ""
         context['user_nav'] = "active"
         context['contact_nav'] = ""
+        context['team_nav'] = ""
         print(context, "context..........")
         return render(request, self.template_name, context)
 
@@ -348,6 +362,7 @@ class Team(TemplateView):
         context['cases_nav'] = ""
         context['user_nav'] = ""
         context['contact_nav'] = ""
+        context['team_nav'] = "active"
         return context
 
 
