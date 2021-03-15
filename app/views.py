@@ -34,6 +34,7 @@ class AboutView(TemplateView):
         context['contact_nav'] = ""
         context['team_nav'] = ""
 
+
         return context
 
 
