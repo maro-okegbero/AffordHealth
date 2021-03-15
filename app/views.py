@@ -26,6 +26,13 @@ class AboutView(TemplateView):
         context['now'] = timezone.now()
         context['cases'] = Cause.objects.all()[:5]
         context['blog_posts'] = BlogPost.objects.all()[:3]
+        context['about_nav'] = "active"
+        context['blog_nav'] = ""
+        context['home_nav'] = ""
+        context['cases_nav'] = ""
+        context['user_nav'] = ""
+        context['contact_nav'] = ""
+
         return context
 
 
@@ -38,6 +45,12 @@ class BlogListView(ListView):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()
         context['blog_posts'] = BlogPost.objects.all()[:3]
+        context['about_nav'] = ""
+        context['blog_nav'] = "active"
+        context['home_nav'] = ""
+        context['cases_nav'] = ""
+        context['user_nav'] = ""
+        context['contact_nav'] = ""
         return context
 
 
@@ -51,6 +64,12 @@ class BlogDetailView(DetailView):
         context_object = context['object']
         object_title = context_object.title
         context['blog_posts'] = BlogPost.objects.exclude(title__exact=object_title)[:3]
+        context['about_nav'] = ""
+        context['blog_nav'] = "active"
+        context['home_nav'] = ""
+        context['cases_nav'] = ""
+        context['user_nav'] = ""
+        context['contact_nav'] = ""
         return context
 
 
@@ -63,6 +82,12 @@ class CasesList(ListView):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()
         context['blog_posts'] = BlogPost.objects.all()[:3]
+        context['about_nav'] = ""
+        context['blog_nav'] = ""
+        context['home_nav'] = ""
+        context['cases_nav'] = "active"
+        context['user_nav'] = ""
+        context['contact_nav'] = ""
         try:
             approved = Cause.objects.filter(approved=True)
         except Exception as e:
@@ -85,6 +110,12 @@ class PersonalCasesList(ListView):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()
         context['blog_posts'] = BlogPost.objects.all()[:3]
+        context['about_nav'] = ""
+        context['blog_nav'] = ""
+        context['home_nav'] = ""
+        context['cases_nav'] = "active"
+        context['user_nav'] = ""
+        context['contact_nav'] = ""
 
         try:
             approved = Cause.objects.filter(user=user, approved=True)
@@ -115,6 +146,12 @@ class CasesDetail(View):
         object_description = context_object.description
         context['cases'] = Cause.objects.exclude(description__exact=object_description)[:5]
         context['blog_posts'] = BlogPost.objects.all()[:3]
+        context['about_nav'] = ""
+        context['blog_nav'] = ""
+        context['home_nav'] = ""
+        context['cases_nav'] = "active"
+        context['user_nav'] = ""
+        context['contact_nav'] = ""
         return render(request, self.template_name, context)
 
     def post(self, request, pk, *args, **kwargs):
@@ -126,6 +163,12 @@ class CasesDetail(View):
         object_description = context_object.description
         context['cases'] = Cause.objects.exclude(description__exact=object_description)[:5]
         context['blog_posts'] = BlogPost.objects.all()[:3]
+        context['about_nav'] = ""
+        context['blog_nav'] = ""
+        context['home_nav'] = ""
+        context['cases_nav'] = "active"
+        context['user_nav'] = ""
+        context['contact_nav'] = ""
         return render(request, self.template_name, context)
 
 
@@ -146,6 +189,12 @@ class CaseCreate(FormView):
         context = super().get_context_data(**kwargs)
         context['cases'] = Cause.objects.all()[:5]
         context['blog_posts'] = BlogPost.objects.all()[:3]
+        context['about_nav'] = ""
+        context['blog_nav'] = ""
+        context['home_nav'] = ""
+        context['cases_nav'] = "active"
+        context['user_nav'] = ""
+        context['contact_nav'] = ""
         return context
 
 
@@ -156,6 +205,12 @@ class ContactView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['cases'] = Cause.objects.all()[:5]
         context['blog_posts'] = BlogPost.objects.all()[:3]
+        context['about_nav'] = ""
+        context['blog_nav'] = ""
+        context['home_nav'] = ""
+        context['cases_nav'] = ""
+        context['user_nav'] = ""
+        context['contact_nav'] = "active"
         return context
 
 
@@ -166,6 +221,12 @@ class FaqView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['cases'] = Cause.objects.all()[:5]
         context['blog_posts'] = BlogPost.objects.all()[:3]
+        context['about_nav'] = ""
+        context['blog_nav'] = ""
+        context['home_nav'] = ""
+        context['cases_nav'] = ""
+        context['user_nav'] = ""
+        context['contact_nav'] = ""
         return context
 
 
@@ -186,6 +247,12 @@ class HomepageView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['cases'] = Cause.objects.all()[:5]
         context['blog_posts'] = BlogPost.objects.all()[:3]
+        context['about_nav'] = ""
+        context['blog_nav'] = ""
+        context['home_nav'] = "active"
+        context['cases_nav'] = ""
+        context['user_nav'] = ""
+        context['contact_nav'] = ""
         return context
 
 
@@ -199,6 +266,12 @@ class LoginView(View):
         context['cases'] = Cause.objects.all()[:5]
         context['blog_posts'] = BlogPost.objects.all()[:3]
         context['form'] = self.form_class()
+        context['about_nav'] = ""
+        context['blog_nav'] = ""
+        context['home_nav'] = ""
+        context['cases_nav'] = ""
+        context['user_nav'] = "active"
+        context['contact_nav'] = ""
         return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
@@ -207,6 +280,12 @@ class LoginView(View):
         context['cases'] = Cause.objects.all()[:5]
         context['blog_posts'] = BlogPost.objects.all()[:3]
         context['form'] = form
+        context['about_nav'] = ""
+        context['blog_nav'] = ""
+        context['home_nav'] = ""
+        context['cases_nav'] = ""
+        context['user_nav'] = "active"
+        context['contact_nav'] = ""
         if form.is_valid():
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password')
@@ -233,6 +312,12 @@ class RegisterView(View):
         context['blog_posts'] = BlogPost.objects.all()[:3]
         form = self.form_class()
         context['form'] = form
+        context['about_nav'] = ""
+        context['blog_nav'] = ""
+        context['home_nav'] = ""
+        context['cases_nav'] = ""
+        context['user_nav'] = "active"
+        context['contact_nav'] = ""
         print(context, "context..........")
         return render(request, self.template_name, context)
 
@@ -257,6 +342,12 @@ class Team(TemplateView):
         context = super().get_context_data(**kwargs)
         context['cases'] = Cause.objects.all()[:5]
         context['blog_posts'] = BlogPost.objects.all()[:3]
+        context['about_nav'] = ""
+        context['blog_nav'] = ""
+        context['home_nav'] = ""
+        context['cases_nav'] = ""
+        context['user_nav'] = ""
+        context['contact_nav'] = ""
         return context
 
 

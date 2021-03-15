@@ -541,7 +541,7 @@ function payWithPaystack() {
     currency: 'NGN', // Use GHS for Ghana Cedis or USD for US Dollars
     callback: function(response) {
       //this happens after the payment is completed successfully
-      var reference = response.reference;
+      var reference = 'ze reference ';
       alert('Payment complete! Reference: ' + reference)
 		// Make an AJAX call to your server with the reference to verify the transaction
     },
@@ -550,7 +550,11 @@ function payWithPaystack() {
     },
 
   });
+  console.log('about to open iframe............')
   handler.openIframe();
+  var form = document.getElementById("paymentForm");
+  function handleForm(event) { event.preventDefault(); }
+  form.addEventListener('submit', handleForm);
 
 }
 

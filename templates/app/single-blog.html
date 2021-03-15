@@ -2,141 +2,6 @@
 {% extends 'app/_base.html' %}
 {% load static %}
 
-{% block nav %}
-
-     <div class="navbar-area fixed-top">
-           <div class="huruma-responsive-nav">
-                <div class="container">
-                    <div class="huruma-responsive-menu">
-                        <div class="logo">
-                            <a href={% url 'homepage' %}>
-                                <img class="white-logo" alt="logo" src={% static "assets/img/new_logo.png" %} >
-                                <img class="black-logo" alt="image" src={% static "assets/img/new_logo.png" %} >
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="huruma-nav">
-                <div class="container">
-                    <nav class="navbar navbar-expand-md navbar-light">
-                        <a class="navbar-brand" href={% url 'homepage' %}>
-                            <img class="white-logo" alt="logo" src={% static "assets/img/new_logo.png"%} >
-                            <img class="black-logo" alt="image" src={% static "assets/img/new_logo.png" %} >
-                        </a>
-
-                        <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link " href={% url 'homepage' %} >
-                                        Home
-                                    </a>
-
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link "  href={% url 'about' %}>
-                                        About
-                                    </a>
-                                </li>
-
-   <li class="nav-item">
-                                    <a class="nav-link " href=#>
-                                        Cases
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href={% url 'submit_case' %}>
-                                                 Submit a Case
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href={% url 'cases' %}>
-                                                Active Cases
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href={% url 'personal_cases' %}>
-                                                 Personal Cases
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-
-{#                                <li class="nav-item">#}
-{#                                    <a  class="nav-link " href={% url 'faq' %}>#}
-{#                                        Faq#}
-{#                                    </a>#}
-{#                                </li>#}
-{##}
-{##}
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        User
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href={% url 'login' %}>
-                                                Log In
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href={% url 'signup' %}>
-                                                Sign Up
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href={% url 'password_reset' %}>
-                                                Recover Password
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href={% url 'contact' %}>
-                                        Contact
-                                    </a>
-                                </li>
-
-
-                                <li class="nav-item">
-                                    <a class="nav-link active" href={% url 'blog' %}>
-                                        Blog
-                                    </a>
-
-                                </li>
-
-                            </ul>
-
-                            <div class="others-options">
-
-                                <div class="option-item"><i class="search-btn bx bx-search"></i>
-                                    <i class="close-btn bx bx-x"></i>
-                                    <div class="search-overlay search-popup">
-                                        <div class='search-box'>
-                                            <form class="search-form">
-                                                <input class="search-input" name="search" placeholder="Search" type="text">
-
-                                                <button class="search-button" type="submit">
-                                                    <i class="bx bx-search"></i>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-
-{% endblock nav %}
-
 
 {% block content %}
 
@@ -214,141 +79,141 @@
 {#                                </div>#}
 {#                            </div>#}
 
-                            <div class="comments-area">
-                                <h3 class="comments-title">4 Comments:</h3>
-                                <ol class="comment-list">
-                                    <li class="comment">
-                                        <article class="comment-body">
-                                            <footer class="comment-meta">
-                                                <div class="comment-author vcard">
-                                                    <img src="assets/img/client/1.jpg" class="avatar" alt="image">
-                                                    <b class="fn">John Jones</b>
-                                                    <span class="says">says:</span>
-                                                </div>
-                                                <div class="comment-metadata">
-                                                    <a href="#">
-                                                        <time>April 24, 2020 at 10:59 am</time>
-                                                    </a>
-                                                </div>
-                                            </footer>
-                                            <div class="comment-content">
-                                                <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                            </div>
-                                            <div class="reply">
-                                                <a href="#" class="comment-reply-link">Reply</a>
-                                            </div>
-                                        </article>
-
-                                        <ol class="children">
-                                            <li class="comment">
-                                                <article class="comment-body">
-                                                    <footer class="comment-meta">
-                                                        <div class="comment-author vcard">
-                                                            <img src="assets/img/client/2.jpg" class="avatar" alt="image">
-                                                            <b class="fn">Steven Smith</b>
-                                                            <span class="says">says:</span>
-                                                        </div>
-                                                        <div class="comment-metadata">
-                                                            <a href="#">
-                                                                <time>April 24, 2020 at 10:59 am</time>
-                                                            </a>
-                                                        </div>
-                                                    </footer>
-                                                    <div class="comment-content">
-                                                        <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                    </div>
-                                                    <div class="reply">
-                                                        <a href="#" class="comment-reply-link">Reply</a>
-                                                    </div>
-                                                </article>
-                                            </li>
-
-                                            <ol class="children">
-                                                <li class="comment">
-                                                    <article class="comment-body">
-                                                        <footer class="comment-meta">
-                                                            <div class="comment-author vcard">
-                                                                <img src="assets/img/client/3.jpg" class="avatar" alt="image">
-                                                                <b class="fn">Sarah Taylor</b>
-                                                                <span class="says">says:</span>
-                                                            </div>
-                                                            <div class="comment-metadata">
-                                                                <a href="#">
-                                                                    <time>April 24, 2020 at 10:59 am</time>
-                                                                </a>
-                                                            </div>
-                                                        </footer>
-                                                        <div class="comment-content">
-                                                            <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                        </div>
-                                                        <div class="reply">
-                                                            <a href="#" class="comment-reply-link">Reply</a>
-                                                        </div>
-                                                    </article>
-                                                </li>
-                                            </ol>
-                                        </ol>
-                                    </li>
-
-                                    <li class="comment">
-                                        <li class="comment">
-                                            <article class="comment-body">
-                                                <footer class="comment-meta">
-                                                    <div class="comment-author vcard">
-                                                        <img src="assets/img/client/4.jpg" class="avatar" alt="image">
-                                                        <b class="fn">James Anderson</b>
-                                                        <span class="says">says:</span>
-                                                    </div>
-                                                    <div class="comment-metadata">
-                                                        <a href="#">
-                                                            <time>April 24, 2020 at 10:59 am</time>
-                                                        </a>
-                                                    </div>
-                                                </footer>
-                                                <div class="comment-content">
-                                                    <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                </div>
-                                                <div class="reply">
-                                                    <a href="#" class="comment-reply-link">Reply</a>
-                                                </div>
-                                            </article>
-                                        </li>
-                                    </li>
-                                </ol>
-
-                                <div class="comment-respond">
-                                    <h3 class="comment-reply-title">Leave a Reply</h3>
-                                    <form action="/create_post/" method="POST" id="post-form">
-                                        {% csrf_token %}
-                                        <p class="comment-notes">
-                                            <span id="email-notes">Your email address will not be published.</span>
-                                            Required fields are marked 
-                                            <span class="required">*</span>
-                                        </p>
-                                        <p class="comment-form-comment">
-                                            <label>Comment</label>
-                                            <textarea name="comment" id="comment" cols="45" rows="5" maxlength="65525" required="required"></textarea>
-                                        </p>
-                                        <p class="comment-form-author">
-                                            <label>Name <span class="required">*</span></label>
-                                            <input type="text" id="author" name="author" required="required">
-                                        </p>
-                                        <p class="comment-form-email">
-                                            <label>Email <span class="required">*</span></label>
-                                            <input type="email" id="email" name="email" required="required">
-                                        </p>
-
-                                        <p class="comment-form-post">
-
-                                            <input type="hidden" id="post" name="post" required="required" value={{ blogpost.pk }}>
-                                        </p>
-
-                                        <p class="form-submit">
-                                            <input type="submit" name="submit" id="submit" onsubmit="submitComment()" class="submit" value="Post A Comment">
-                                        </p>
-                                    </form>
-                                </div>
-                            </div>
+{#                            <div class="comments-area">#}
+{#                                <h3 class="comments-title">4 Comments:</h3>#}
+{#                                <ol class="comment-list">#}
+{#                                    <li class="comment">#}
+{#                                        <article class="comment-body">#}
+{#                                            <footer class="comment-meta">#}
+{#                                                <div class="comment-author vcard">#}
+{#                                                    <img src="assets/img/client/1.jpg" class="avatar" alt="image">#}
+{#                                                    <b class="fn">John Jones</b>#}
+{#                                                    <span class="says">says:</span>#}
+{#                                                </div>#}
+{#                                                <div class="comment-metadata">#}
+{#                                                    <a href="#">#}
+{#                                                        <time>April 24, 2020 at 10:59 am</time>#}
+{#                                                    </a>#}
+{#                                                </div>#}
+{#                                            </footer>#}
+{#                                            <div class="comment-content">#}
+{#                                                <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>#}
+{#                                            </div>#}
+{#                                            <div class="reply">#}
+{#                                                <a href="#" class="comment-reply-link">Reply</a>#}
+{#                                            </div>#}
+{#                                        </article>#}
+{##}
+{#                                        <ol class="children">#}
+{#                                            <li class="comment">#}
+{#                                                <article class="comment-body">#}
+{#                                                    <footer class="comment-meta">#}
+{#                                                        <div class="comment-author vcard">#}
+{#                                                            <img src="assets/img/client/2.jpg" class="avatar" alt="image">#}
+{#                                                            <b class="fn">Steven Smith</b>#}
+{#                                                            <span class="says">says:</span>#}
+{#                                                        </div>#}
+{#                                                        <div class="comment-metadata">#}
+{#                                                            <a href="#">#}
+{#                                                                <time>April 24, 2020 at 10:59 am</time>#}
+{#                                                            </a>#}
+{#                                                        </div>#}
+{#                                                    </footer>#}
+{#                                                    <div class="comment-content">#}
+{#                                                        <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>#}
+{#                                                    </div>#}
+{#                                                    <div class="reply">#}
+{#                                                        <a href="#" class="comment-reply-link">Reply</a>#}
+{#                                                    </div>#}
+{#                                                </article>#}
+{#                                            </li>#}
+{##}
+{#                                            <ol class="children">#}
+{#                                                <li class="comment">#}
+{#                                                    <article class="comment-body">#}
+{#                                                        <footer class="comment-meta">#}
+{#                                                            <div class="comment-author vcard">#}
+{#                                                                <img src="assets/img/client/3.jpg" class="avatar" alt="image">#}
+{#                                                                <b class="fn">Sarah Taylor</b>#}
+{#                                                                <span class="says">says:</span>#}
+{#                                                            </div>#}
+{#                                                            <div class="comment-metadata">#}
+{#                                                                <a href="#">#}
+{#                                                                    <time>April 24, 2020 at 10:59 am</time>#}
+{#                                                                </a>#}
+{#                                                            </div>#}
+{#                                                        </footer>#}
+{#                                                        <div class="comment-content">#}
+{#                                                            <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>#}
+{#                                                        </div>#}
+{#                                                        <div class="reply">#}
+{#                                                            <a href="#" class="comment-reply-link">Reply</a>#}
+{#                                                        </div>#}
+{#                                                    </article>#}
+{#                                                </li>#}
+{#                                            </ol>#}
+{#                                        </ol>#}
+{#                                    </li>#}
+{##}
+{#                                    <li class="comment">#}
+{#                                        <li class="comment">#}
+{#                                            <article class="comment-body">#}
+{#                                                <footer class="comment-meta">#}
+{#                                                    <div class="comment-author vcard">#}
+{#                                                        <img src="assets/img/client/4.jpg" class="avatar" alt="image">#}
+{#                                                        <b class="fn">James Anderson</b>#}
+{#                                                        <span class="says">says:</span>#}
+{#                                                    </div>#}
+{#                                                    <div class="comment-metadata">#}
+{#                                                        <a href="#">#}
+{#                                                            <time>April 24, 2020 at 10:59 am</time>#}
+{#                                                        </a>#}
+{#                                                    </div>#}
+{#                                                </footer>#}
+{#                                                <div class="comment-content">#}
+{#                                                    <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>#}
+{#                                                </div>#}
+{#                                                <div class="reply">#}
+{#                                                    <a href="#" class="comment-reply-link">Reply</a>#}
+{#                                                </div>#}
+{#                                            </article>#}
+{#                                        </li>#}
+{#                                    </li>#}
+{#                                </ol>#}
+{##}
+{#                                <div class="comment-respond">#}
+{#                                    <h3 class="comment-reply-title">Leave a Reply</h3>#}
+{#                                    <form action="/create_post/" method="POST" id="post-form">#}
+{#                                        {% csrf_token %}#}
+{#                                        <p class="comment-notes">#}
+{#                                            <span id="email-notes">Your email address will not be published.</span>#}
+{#                                            Required fields are marked #}
+{#                                            <span class="required">*</span>#}
+{#                                        </p>#}
+{#                                        <p class="comment-form-comment">#}
+{#                                            <label>Comment</label>#}
+{#                                            <textarea name="comment" id="comment" cols="45" rows="5" maxlength="65525" required="required"></textarea>#}
+{#                                        </p>#}
+{#                                        <p class="comment-form-author">#}
+{#                                            <label>Name <span class="required">*</span></label>#}
+{#                                            <input type="text" id="author" name="author" required="required">#}
+{#                                        </p>#}
+{#                                        <p class="comment-form-email">#}
+{#                                            <label>Email <span class="required">*</span></label>#}
+{#                                            <input type="email" id="email" name="email" required="required">#}
+{#                                        </p>#}
+{##}
+{#                                        <p class="comment-form-post">#}
+{##}
+{#                                            <input type="hidden" id="post" name="post" required="required" value={{ blogpost.pk }}>#}
+{#                                        </p>#}
+{##}
+{#                                        <p class="form-submit">#}
+{#                                            <input type="submit" name="submit" id="submit" onsubmit="submitComment()" class="submit" value="Post A Comment">#}
+{#                                        </p>#}
+{#                                    </form>#}
+{#                                </div>#}
+{#                            </div>#}
                         </div>
                     </div>
 
@@ -442,37 +307,6 @@
 
 {% block javascript %}
 
-<script>
 
-    function submitComment() {
-        var name = $('#name').val();
-        var email = $('#email').val();
-        var comment = $('#comment').val();
-        var post = $('#post').val();
-        console.log("I got here===============")
-
-        $.ajax({
-            url: '{% url 'comment' %}',
-            data:{
-                'name':name,
-                'email':email,
-                'body':comment,
-                'blog_id':post
-                },
-                dataType:'json',
-
-                success: function (data) {
-                if (data.success) {
-
-
-                }else{
-
-
-                }
-            }
-        });
-
-    }
-</script>
 
 {% endblock %}
