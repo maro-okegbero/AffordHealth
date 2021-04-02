@@ -3,7 +3,6 @@ from app.models import *
 from django import forms
 
 
-
 class CausesForm(ModelForm):
     name = forms.CharField(max_length=2000, required=True, label="Name",
                            widget=forms.TextInput(attrs={'id': 'name', 'name': 'name', 'class': "form-control",
@@ -70,7 +69,5 @@ class CommentForm(ModelForm):
                 'id': 'post-text',
                 'required': True,
                 'placeholder': 'Say something...'
-        })
+            })
         }
-
-

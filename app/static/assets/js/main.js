@@ -533,28 +533,43 @@ var paymentForm = document.getElementById('paymentForm');
 paymentForm.addEventListener('submit', payWithPaystack, false);
 function payWithPaystack() {
 	console.log('It hit here, hulabalu');
-  var handler = PaystackPop.setup({
-    key: 'pk_test_0f0c191f5e42b47447ebbfd26e7d188265075ba6', // Replace with your public key
-    email: document.getElementById('email-address').value,
-    amount: document.getElementById('amount').value * 100, // the amount value is multiplied by 100 to convert to the lowest currency unit
-    ref: document.getElementById('reference').value ,
-    currency: 'NGN', // Use GHS for Ghana Cedis or USD for US Dollars
-    callback: function(response) {
-      //this happens after the payment is completed successfully
-      var reference = 'ze reference ';
+		const rbs = document.querySelectorAll('input[name="currency"]');
+		let selectedValue;
+		for(const rb of rbs) {
+			if (rb.checked) {
+				selectedValue = rb.value;
+			}
+			var handler = PaystackPop.setup({
+				key: 'pk_test_0f0c191f5e42b47447ebbfd26e7d188265075ba6', // Replace with your public key
+				email: document.getElementById('email-address').value,
+				amount: document.getElementById('amount').value * 100, // the amount value is multiplied by 100 to convert to the lowest currency unit
+				ref: document.getElementById('reference').value,
+				currency: selectedValue, // Use GHS for Ghana Cedis or USD for US Dollars
+				callback: function (response) {
+					//verify that payment actually occurred and update the cause accordingly
+					var reference = document.getElementById('reference').value;
+					$.ajax({
+						url: '',
+						method: 'get',
+						success: function (response){
 
-		// Make an AJAX call to your server with the reference to verify the transaction
-    },
-    onClose: function() {
-      alert('Transaction was not completed, window closed.');
-    },
+						}
+						}
+					)
+				},
+				onClose: function () {
+					alert('Transaction was not completed, window closed.');
+				},
 
-  });
-  console.log('about to open iframe............')
-  handler.openIframe();
-  var form = document.getElementById("paymentForm");
-  function handleForm(event) { event.preventDefault(); }
-  form.addEventListener('submit', handleForm);
+			});
+			console.log('about to open iframe............')
+			handler.openIframe();
+			var form = document.getElementById("paymentForm");
 
-}
+			function handleForm(event) {
+				event.preventDefault();
+			}
+
+			form.addEventListener('submit', handleForm);
+		}}
 

@@ -16,6 +16,8 @@ from django.contrib.auth import views as auth_views, authenticate, login, logout
 from django.views import generic
 from django.urls import reverse_lazy
 from accounts.forms import LoginForm, BootstrapModelForm, RegisterForm
+import requests as reqii
+from Afford_Health.settings import PAYSTACK_VERIFY_TRANSACTION_URL, PAYSTACK_SECRET_KEY
 
 
 class AboutView(TemplateView):
@@ -33,7 +35,6 @@ class AboutView(TemplateView):
         context['user_nav'] = ""
         context['contact_nav'] = ""
         context['team_nav'] = ""
-
 
         return context
 
@@ -224,6 +225,17 @@ class ContactView(TemplateView):
         return context
 
 
+class DonateGenerally(TemplateView):
+    template_name = "app/donate.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cases'] = Cause.objects.all()[:5]
+        context['reference'] = "general_payment" + str(random.randint(1, 10000))
+        context['blog_posts'] = BlogPost.objects.all()[:3]
+        return context
+
+
 class FaqView(TemplateView):
     template_name = "app/faq.html"
 
@@ -249,6 +261,8 @@ class PrivacyPolicyView(TemplateView):
         context['cases'] = Cause.objects.all()[:5]
         context['blog_posts'] = BlogPost.objects.all()[:3]
         return context
+
+
 
 
 class HomepageView(TemplateView):
@@ -367,28 +381,55 @@ class Team(TemplateView):
         return context
 
 
-def comment_ajax(request):
+def verify_donation(request):
     """
-    comment on a blogpost
+    verify that a donation is legitimate
     :param request:
     :return:
     """
-    if request.is_ajax:
-        print("HELlo========================================")
-        name = request.GET.get("name")
-        body = request.GET.get("body")
-        email = request.GET.get("email")
-        blog_id = request.GET.get("blog_id")
-        data = {}
+    reference_code = request.GET.get("reference_code")
+    url = PAYSTACK_VERIFY_TRANSACTION_URL + reference_code
+    headers = {"Authorization": PAYSTACK_SECRET_KEY }
+    req = reqii.get(url=url, headers=headers)
+    if req.status_code == "200":
+        response = req.json()
+        status = response.get('data').get('status')
+        amount = response.get('data').get('amount')
+        donor_name = response.get('data').get('authorization').get("account_name")
+        if status == "successful":
+            cause = Cause.objects.get(reference_code=reference_code)
+            cause.donor_count += 1
+            cause.donated = amount
+            cause.save()
+            DonationTransactionHistory(cause=cause, donor_name=donor_name, amount_donated=amount).save()
+            return
 
-        if name and body and email and blog_id:
-            print("YESSSSSSSS========================================")
-            try:
-                blog = BlogPost.objects.get(pk=blog_id)
-                comment = Comment.objects.create(name=name, body=body, email=email, blog=blog)
-                data = {"success": True, "message": "comment was created successfully"}
-            except (BlogPost.DoesNotExist, Exception) as e:
-                data = {"success": False, "message": e}
 
-            return JsonResponse(data)
-        print("Nooooooooooooooooooooooooooo=--=====================")
+
+
+
+# def comment_ajax(request):
+#     """
+#     comment on a blogpost
+#     :param request:
+#     :return:
+#     """
+#     if request.is_ajax:
+#         print("HELlo========================================")
+#         name = request.GET.get("name")
+#         body = request.GET.get("body")
+#         email = request.GET.get("email")
+#         blog_id = request.GET.get("blog_id")
+#         data = {}
+#
+#         if name and body and email and blog_id:
+#             print("YESSSSSSSS========================================")
+#             try:
+#                 blog = BlogPost.objects.get(pk=blog_id)
+#                 comment = Comment.objects.create(name=name, body=body, email=email, blog=blog)
+#                 data = {"success": True, "message": "comment was created successfully"}
+#             except (BlogPost.DoesNotExist, Exception) as e:
+#                 data = {"success": False, "message": e}
+#
+#             return JsonResponse(data)
+#         print("Nooooooooooooooooooooooooooo=--=====================")

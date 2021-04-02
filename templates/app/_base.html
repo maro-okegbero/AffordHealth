@@ -91,49 +91,49 @@
 {#        </div>#}
 {#        <!-- End Header Area -->#}
 
-        <!-- Start Navbar Area -->
-
-        <div class="navbar-area fixed-top">
-            <div class="huruma-responsive-nav">
-                <div class="container">
-                    <div class="huruma-responsive-menu">
-                        <div class="logo">
-                            <a href={% url 'homepage' %}>
-                                <img class="white-logo" alt="logo" src={% static "assets/img/icon/ah@4x.png" %} >
-                                <img class="black-logo" alt="image" src={% static "assets/img/icon/ah@4x.png" %} >
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="huruma-nav">
-                <div class="container">
-                    <nav class="navbar navbar-expand-md navbar-light">
-                        <a class="navbar-brand" href={% url 'homepage' %}>
-                            <img class="white-logo" alt="logo" width="148px" height="52px" src={% static "assets/img/icon/ah.svg"%} >
-                            <img class="black-logo" alt="image" width="148px" height="52px" src={% static "assets/img/icon/ah.svg" %} >
-                        </a>
-
-                        <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link {{ home_nav }}" href={% url 'homepage' %} >
-                                        Home
-                                    </a>
-
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link {{ about_nav }}" href={% url 'about' %}>
-                                        About
-                                    </a>
-                                </li>
-
-                                 <li class="nav-item">
-                                    <a class="nav-link {{ cases_nav }}" href={% url 'cases' %}>
-                                        Cases
-                                    </a>
+{#        <!-- Start Navbar Area -->#}
+{##}
+{#        <div class="navbar-area fixed-top">#}
+{#            <div class="huruma-responsive-nav" style="background-color: rgb(252,185,151)">#}
+{#                <div class="container">#}
+{#                    <div class="huruma-responsive-menu">#}
+{#                        <div class="logo">#}
+{#                            <a href={% url 'homepage' %}>#}
+{#                                <img class="white-logo" alt="logo" src={% static "assets/img/icon/ah@4x.png" %} >#}
+{#                                <img class="black-logo" alt="image" src={% static "assets/img/icon/ah@4x.png" %} >#}
+{#                            </a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <div class="huruma-nav">#}
+{#                <div class="container">#}
+{#                    <nav class="navbar navbar-expand-md navbar-light">#}
+{#                        <a class="navbar-brand" href={% url 'homepage' %}>#}
+{#                            <img class="white-logo" alt="logo" width="148px" height="52px" src={% static "assets/img/icon/ah.svg"%} >#}
+{#                            <img class="black-logo" alt="image" width="148px" height="52px" src={% static "assets/img/icon/ah.svg" %} >#}
+{#                        </a>#}
+{##}
+{#                        <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">#}
+{#                            <ul class="navbar-nav">#}
+{#                                <li class="nav-item">#}
+{#                                    <a class="nav-link {{ home_nav }}" href={% url 'homepage' %} >#}
+{#                                        Home#}
+{#                                    </a>#}
+{##}
+{#                                </li>#}
+{##}
+{#                                <li class="nav-item">#}
+{#                                    <a class="nav-link {{ about_nav }}" href={% url 'about' %}>#}
+{#                                        About#}
+{#                                    </a>#}
+{#                                </li>#}
+{##}
+{#                                 <li class="nav-item">#}
+{#                                    <a class="nav-link {{ cases_nav }}" href={% url 'cases' %}>#}
+{#                                        Cases#}
+{#                                    </a>#}
 {#                                    <ul class="dropdown-menu">#}
 {#                                        <li class="nav-item">#}
 {#                                            <a class="nav-link " href={% url 'submit_case' %}>#}
@@ -151,16 +151,16 @@
 {#                                            </a>#}
 {#                                        </li>#}
 {#                                    </ul>#}
-                                </li>
-
-
+{#                                </li>#}
+{##}
+{##}
 {#                                <li class="nav-item">#}
 {#                                    <a  class="nav-link" href={% url 'faq' %}>#}
 {#                                        Faq#}
 {#                                    </a>#}
 {#                                </li>#}
-
-
+{##}
+{##}
 {#                                <li class="nav-item">#}
 {#                                    <a href="#" class="nav-link {{ user_nav }}">#}
 {#                                        User#}
@@ -183,39 +183,39 @@
 {#                                        </li>#}
 {#                                    </ul>#}
 {#                                </li>#}
-
-
-                                <li class="nav-item">
-                                    <a class="nav-link {{ contact_nav }}" href={% url 'contact' %}>
-                                        Contact
-                                    </a>
-                                </li>
-
-
-
-                                <li class="nav-item">
-                                    <a class="nav-link {{ blog_nav }}" href={% url 'blog' %}>
-                                        Blog
-                                    </a>
-
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link {{ team_nav }}" href={% url 'team' %}>
-                                        Team
-                                    </a>
-
-                                </li>
-
-                            </ul>
-
-
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-        <!-- End Navbar Area -->
+{##}
+{##}
+{#                                <li class="nav-item">#}
+{#                                    <a class="nav-link {{ contact_nav }}" href={% url 'contact' %}>#}
+{#                                        Contact#}
+{#                                    </a>#}
+{#                                </li>#}
+{##}
+{##}
+{##}
+{#                                <li class="nav-item">#}
+{#                                    <a class="nav-link {{ blog_nav }}" href={% url 'blog' %}>#}
+{#                                        Blog#}
+{#                                    </a>#}
+{##}
+{#                                </li>#}
+{##}
+{#                                <li class="nav-item">#}
+{#                                    <a class="nav-link {{ team_nav }}" href={% url 'team' %}>#}
+{#                                        Team#}
+{#                                    </a>#}
+{##}
+{#                                </li>#}
+{##}
+{#                            </ul>#}
+{##}
+{##}
+{#                        </div>#}
+{#                    </nav>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <!-- End Navbar Area -->#}
 
     {% block content %}
 
