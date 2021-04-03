@@ -142,11 +142,11 @@
                             <img class="shadow" alt="image" src={% static "assets/img/photo-1507514217837-da7e39d37edd.jpeg"%}>
                         </div>
 
-                        <div class="about-video">
-                            <a href="https://www.youtube.com/watch?v=uemObN8_dcw" class="video-btn popup-youtube">
-                                <i class="bx bx-play"></i>
-                            </a>
-                        </div>
+{#                        <div class="about-video">#}
+{#                            <a href="https://www.youtube.com/watch?v=uemObN8_dcw" class="video-btn popup-youtube">#}
+{#                                <i class="bx bx-play"></i>#}
+{#                            </a>#}
+{#                        </div>#}
                     </div>
                 </div>
             </div>
@@ -202,6 +202,56 @@
         </section>
         <!-- End Fun Facts Area -->
 
+
+         <!-- Start Donor Area -->
+        <section class="donor-section pt-100 pb-70">
+            <div class="container">
+                <div class="section-title">
+                    <h2>How To Become A Donor</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="donor-item">
+                            <div class="icon">
+                                <i class="flaticon-support"></i>
+                            </div>
+                            <h3>Select A Case</h3>
+                            <p>Choose from any of our current cases</p>
+                            <a href={% url 'cases' %} class="donor-btn">See Open Cases ++</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="donor-item">
+                            <div class="icon">
+                                <i class="flaticon-confirmation"></i>
+                            </div>
+                            <h3>Fill in Your Details and Donate</h3>
+                            <p>Donate to a case that resonates with you or donate generally to our cause</p>
+                            <a href="#" class="donor-btn">Donate ++</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-md-6 offset-md-3 offset-lg-0">
+                        <div class="donor-item">
+                            <div class="icon">
+                                <i class="flaticon-enjoy"></i>
+                            </div>
+                            <h3>Get Notified Via Email</h3>
+                            <p>Email updates will be sent to you regarding the progress of the case you just donated to</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </section>
+        <!-- End Donor Area -->
 
         <!-- Start Causes Area -->
         <section class="causes-section pt-100 pb-70">
@@ -633,8 +683,8 @@
             <div class="container">
                 <div class="section-title">
                     <h2>Want To Know How Else You Can Help?</h2>
-                    <p>More than anything your donations will go a long way in helping us achieve our goal, however we understand that not everyone
-                        with a golden heart has the wherewithal to give out donations, so in that regard we would implore you to help share our work on your social media platforms.</p>
+                    <p>More than anything your donations will go a long way in helping us achieve our goal. However we understand that not everyone
+                        with a golden heart has the wherewithal to give out donations, so we implore you to help share our work on your social media platforms.</p>
                     <p>Thank You!</p>
                      <a href="#" class="donate-btn">
                         Share Now
@@ -708,55 +758,6 @@
         </section>
         <!-- End Blog Area -->
 
-         <!-- Start Donor Area -->
-        <section class="donor-section pt-100 pb-70">
-            <div class="container">
-                <div class="section-title">
-                    <h2>How To Become A Donor</h2>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="donor-item">
-                            <div class="icon">
-                                <i class="flaticon-support"></i>
-                            </div>
-                            <h3>Select A Case</h3>
-                            <p>Choose from any of our current cases</p>
-                            <a href={% url 'cases' %} class="donor-btn">See Open Cases ++</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="donor-item">
-                            <div class="icon">
-                                <i class="flaticon-confirmation"></i>
-                            </div>
-                            <h3>Fill in Your Details and Donate</h3>
-                            <p>Donate to a case that resonates with you or donate generally to our cause</p>
-                            <a href="#" class="donor-btn">Donate ++</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 col-md-6 offset-md-3 offset-lg-0">
-                        <div class="donor-item">
-                            <div class="icon">
-                                <i class="flaticon-enjoy"></i>
-                            </div>
-                            <h3>Get Notified Via Email</h3>
-                            <p>Email updates will be sent to you regarding the progress of the case you just donated to</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="lines">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
-        </section>
-        <!-- End Donor Area -->
 
 {% endblock content %}
 
