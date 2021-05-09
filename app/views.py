@@ -5,7 +5,7 @@ from django.http import JsonResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.generic.edit import CreateView, FormView
-from django.views.generic.base import TemplateView, View
+from django.views.generic.base import TemplateView
 from django.views import View
 from django.db.models import Q
 from app.forms import CausesForm
@@ -263,8 +263,6 @@ class PrivacyPolicyView(TemplateView):
         return context
 
 
-
-
 class HomepageView(TemplateView):
     template_name = 'app/index.html'
 
@@ -389,7 +387,7 @@ def verify_donation(request):
     """
     reference_code = request.GET.get("reference_code")
     url = PAYSTACK_VERIFY_TRANSACTION_URL + reference_code
-    headers = {"Authorization": PAYSTACK_SECRET_KEY }
+    headers = {"Authorization": PAYSTACK_SECRET_KEY}
     req = reqii.get(url=url, headers=headers)
     if req.status_code == "200":
         response = req.json()
@@ -403,10 +401,6 @@ def verify_donation(request):
             cause.save()
             DonationTransactionHistory(cause=cause, donor_name=donor_name, amount_donated=amount).save()
             return
-
-
-
-
 
 # def comment_ajax(request):
 #     """
