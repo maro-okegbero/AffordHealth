@@ -19,6 +19,6 @@ urlpatterns = [
                 path('signup', RegisterView.as_view(), name='signup'),
                 path('team', Team.as_view(), name='team'),
                 path('donate', DonateGenerally.as_view(), name='donate'),
-                # path('comment', comment_ajax, name='comment'),
+                path('verify_donation', verify_donation, name='verify'),
 
 ]

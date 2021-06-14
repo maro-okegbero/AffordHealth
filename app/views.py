@@ -1,7 +1,9 @@
+import json
+
 from django import forms
 from django.contrib.auth.decorators import login_required
 from django.forms import modelform_factory
-from django.http import JsonResponse, HttpResponseRedirect
+from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.generic.edit import CreateView, FormView
@@ -225,15 +227,32 @@ class ContactView(TemplateView):
         return context
 
 
-class DonateGenerally(TemplateView):
+class DonateGenerally(View):
     template_name = "app/donate.html"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def get(self, request, *args, **kwargs):
+        """
+
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        """
+        context = dict()
         context['cases'] = Cause.objects.all()[:5]
         context['reference'] = "general_payment" + str(random.randint(1, 10000))
         context['blog_posts'] = BlogPost.objects.all()[:3]
-        return context
+        return render(request, self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+        """
+
+        :param request:
+        :param args:
+        :param kwargs:
+        :return:
+        """
+        return render(request, self.template_name, context=dict())
 
 
 class FaqView(TemplateView):
@@ -385,11 +404,15 @@ def verify_donation(request):
     :param request:
     :return:
     """
-    reference_code = request.GET.get("reference_code")
+    reference_code = request.POST.get("reference_code")
     url = PAYSTACK_VERIFY_TRANSACTION_URL + reference_code
     headers = {"Authorization": PAYSTACK_SECRET_KEY}
     req = reqii.get(url=url, headers=headers)
+    print("I hit here before the request place-----------------")
+    print(req.status_code, "This is the status code----------------------------------------------------------")
+    print(reference_code, "The reference code==============================")
     if req.status_code == "200":
+        print("I am verifying things on the backend halleluya! ")
         response = req.json()
         status = response.get('data').get('status')
         amount = response.get('data').get('amount')
@@ -400,7 +423,18 @@ def verify_donation(request):
             cause.donated = amount
             cause.save()
             DonationTransactionHistory(cause=cause, donor_name=donor_name, amount_donated=amount).save()
-            return
+            return HttpResponse(
+                json.dumps({"nothing to see": "this isn't happening"}),
+                content_type="application/json"
+            )
+        return HttpResponse(
+            json.dumps({"nothing to see": "this isn't happening"}),
+            content_type="application/json"
+        )
+    return HttpResponse(
+        json.dumps({"nothing to see": "this isn't happening"}),
+        content_type="application/json"
+    )
 
 # def comment_ajax(request):
 #     """
