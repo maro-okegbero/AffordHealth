@@ -346,8 +346,7 @@
                                 <img src={% static "assets/img/home-two/3 (1).png" %} alt="image">
                             </div>
                             <h3>Patient Outreach</h3>
-                            <p>We assess prevalent health problems in a community of interest and come up with the most feasible means to solve them. Aside from financial relief, we also show them our love and care.</p>
-                        </div>
+                            <p>We assess prevalent health problems in a community of interest and come up with the most feasible means to solve them. Aside from financial relief, we also sensitize the people and show them our love and care.</p>                        </div>
                     </div>
                 </div>
             </div>
@@ -394,8 +393,7 @@
 									<div class="tabs_item">
 										<p>One of the many problems in the Nigerian Healthcare system is affordability. Millions of Nigerians are not capable of funding their complete treatment bills both in private hospitals and even in public healthcare centers, where treatment costs are usually less. </p>
 
-										<p>Some of these patients are then denied treatment or held back in the hospital after treatment. In cases where it is clear that the quality of healthcare to be received is high, the problem of affordability becomes a significant and saddening obstacle for the patients.</p>
-										<a class="default-btn" href={% url 'donate' %}>
+                                        <p>Some of these patients are then denied treatment or held back in the hospital after treatment. In cases where it is clear that the quality of healthcare to be received is high, the problem of affordability becomes a significant and saddening obstacle for the patients. Some patients do not even bother going to the hospital and, worse still, some do not have the resources they need to maintain a healthy lifestyle.</p>										<a class="default-btn" href={% url 'donate' %}>
                                             Donate Now
                                             <span></span>
                                             <i class="flaticon-right"></i>
@@ -403,8 +401,7 @@
                                     </div>
 
                                     <div class="tabs_item">
-										<p>We are a team of college students who help patients overcome this obstacle and contribute to solving this problem of healthcare unaffordability in Nigeria by raising funds for them. We seek to ensure that the sick won't have to go through arduous and depressing financial troubles to pay their medical bills.</p>
-
+										<p>We are a team of college students who help patients overcome this obstacle and contribute to solving this problem of healthcare unaffordability in Nigeria by fundraising and enlightenment. We seek to ensure that the sick won't have to go through arduous and depressing financial troubles to pay their medical bills, and those who are already healthy are able to maintain their health.</p>
 										<p>We believe that one life, every life, is worth a fortune; instead of letting patients deteriorate in health or get crippled financially, psychologically, and otherwise because they cannot afford treatment, we cater to their medical bills through this initiative.</p>
 										<a class="default-btn" href={% url 'donate' %}>
                                             Donate Now
@@ -436,17 +433,27 @@
         <!-- End Team Area -->
 
         <!-- Start Donate Area -->
-        <section class="donate-section ptb-100">
+        <section class="donate-section ptb-100" id="sharee">
             <div class="container">
-                <div class="section-title">
+                <div class="section-title" >
                     <h2>Want To Know How Else You Can Help?</h2>
                     <p>More than anything your donations will go a long way in helping us achieve our goal. However we understand that not everyone
-                        with a golden heart has the wherewithal to give out donations, so we implore you to help share our work on your social media platforms.</p>
-                    <p>Thank You!</p>
-                     <a href="#" class="donate-btn">
-                        Share Now
-                        <i class="flaticon-right"></i>
-                    </a>
+                        with a golden heart has the wherewithal to give out donations, so we implore you to help share our work on your social media platforms. Thank You!</p
+                    <br>
+                    <br>
+                    <br>
+                    <div class="share-button">
+                        <a href="#" >Share</a>
+                        <div class="icon-wrapper">
+                            <ul>
+                                <li><a target="_blank" href="https://twitter.com/intent/tweet?url={{ absolute_url }}&text='Donate To Afford Health'"> <i class="flaticon-twitter"></i></a></li>
+                                <li><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ absolute_url }}"> <i class="flaticon-facebook"></i></a></li>
+                                <li><a target="_blank" href="#" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&amp;url={{ absolute_url }}&amp;title=','popup','width=600,height=600');"><i class="flaticon-linkedin"></i></a></li>
+                                <li><a href="mailto:afhealthng@gmail.com"><i class="flaticon-email"></i></a></li>
+                                <li><a href="#sharee" class="close-social-icons"><i class="flaticon-close"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
 
             </div>
 
@@ -511,9 +518,12 @@
 {#                        </div>#}
 {#                    </div>#}
                 </div>
+
             </div>
         </section>
         <!-- End Blog Area -->
+
+
 
 
 {% endblock content %}

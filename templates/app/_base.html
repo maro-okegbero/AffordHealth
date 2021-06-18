@@ -209,6 +209,88 @@ i {
 		left: -25px;
 	}
 }
+.share-button{
+   text-transform: uppercase;
+   border: 2px solid #fff;
+   display: inline-block;
+	position: absolute;
+	overflow: hidden;
+	width: 178px;
+	height: 40px;
+	left: 50%;
+	text-transform: uppercase;
+	font-size: 14px;
+	transform: translate(-50%, -50%);
+}
+.share-button a{
+   color: white;
+	font-size: 12px;
+   display: block;
+   text-decoration: none;
+   font-weight: bold;
+   letter-spacing: 1px;
+   line-height: 26px;
+   padding: 7px 0px 7px 13px;
+}
+.share-button > a:after{
+   font-family: FontAwesome;
+   font-size: 14px;
+   color: white;
+   content: "\f064";
+   margin-left: 10px;
+}
+.share-button > a:hover,
+.share-button > a:hover:after,
+.share-button .icon-wrapper ul li a:hover i{
+	color: #e4e9ea;
+}
+.share-button .icon-wrapper ul li:last-child a:hover i{
+	color: red;
+}
+.share-button .icon-wrapper{
+    position: absolute;
+    left: -286px;
+    top: 0;
+    width: 286px;
+}
+
+.share-button .icon-wrapper > a{
+    display: inline-block;
+}
+.share-button a.hidden{
+    display: none;
+}
+.share-button.active .icon-wrapper{
+    max-height: 40px;
+}
+.share-button .icon-wrapper ul{
+    padding-left: 0;
+    margin: 0;
+    height: 40px;
+}
+.share-button .icon-wrapper ul:after{
+    clear: both;
+}
+.share-button .icon-wrapper ul li{
+    float: left;
+    display: inline-block;
+}
+.share-button .icon-wrapper ul li:last-child{
+    float: right;
+}
+.share-button .icon-wrapper ul li a i{
+    color: white;
+    font-size: 14px;
+}
+.share-button .icon-wrapper ul li:last-child a{
+    background-color: white;
+}
+.share-button .icon-wrapper ul li:last-child a i{
+    color: #2d3847;
+    position: relative;
+    left: 1px;
+}
+
     </style>
 
     <body>
@@ -534,21 +616,42 @@ i {
         <script src={% static "assets/js/rev-slider-custom.js" %}></script>
         <script src="https://js.paystack.co/v1/inline.js"></script>
         <script>
-            // ---------Responsive-navbar-active-animation-----------
+           postShareButtonClick = $(function (){
+    var buttonWrapper = $(".share-button"),
+        button = $(".share-button > a"),
+        icons = $(".share-button > .icon-wrapper"),
+        close = $(".close-social-icons");
 
-  {#      $(document).ready(function(){#}
-  {#$(window).scroll(function(){#}
-  {#	var scroll = $(window).scrollTop();#}
-	{#  if (scroll > 300) {#}
-	{#       $(".navbar-mainbg").css("background-color" , "white");#}
-	{#       $(".hori-selector").css("background-color" , "#302c51");#}
-	{#       $(".right:before").css("background-color" , "#fff");#}
-	{#  }#}
-	{#  	  else{#}
-	{#	  $(".navbar-mainbg").css("background-color" , "#302c51")#}
-  {#        $(".hori-selector").css("background-color" , "#fff");#}
-	{#	  $(".right:before .left:before").css("background-color" , "#302c51");#}
-	{#  }#}
+    function init(){
+        button.on("click", toggle);
+        close.on("click", closeIcons);
+    }
+
+    function toggle(e){
+        if (buttonWrapper.hasClass("active")){
+            closeIcons();
+        } else{
+            openIcons();
+        }
+        e.preventDefault();
+    }
+
+    function openIcons(){
+        buttonWrapper.addClass("active");
+        button.addClass("hidden");
+        buttonWrapper.animate({width: "286"}, 500);
+        icons.animate({left: "0"}, 500);
+    }
+
+    function closeIcons(){
+        buttonWrapper.removeClass("active");
+		  button.removeClass("hidden");
+        icons.animate({left: "-286"}, 0);
+        buttonWrapper.animate({width: "178"}, 0);
+    }
+
+    init();
+});
         function test(){
           var tabsNewAnim = $('#navbarSupportedContent');
           var selectorNewAnim = $('#navbarSupportedContent').find('li').length;
@@ -637,6 +740,7 @@ i {
 
 			form.addEventListener('submit', handleForm);
 		}}
+
 
         </script>
                 {% block javascript%}

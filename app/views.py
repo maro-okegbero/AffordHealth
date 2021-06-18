@@ -296,6 +296,7 @@ class HomepageView(TemplateView):
         context['user_nav'] = ""
         context['contact_nav'] = ""
         context['team_nav'] = ""
+        context['absolute_url'] = settings.BASE_URL
         return context
 
 
