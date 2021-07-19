@@ -410,7 +410,7 @@ def verify_donation(request):
     headers = {"Authorization": PAYSTACK_SECRET_KEY}
     req = reqii.get(url=url, headers=headers)
     print("I hit here before the request place-----------------")
-    print(req.status_code, "This is the status code----------------------------------------------------------")
+    print(req.status_code, "This is the status code-------------------------------------")
     print(reference_code, "The reference code==============================")
     if req.status_code == "200":
         print("I am verifying things on the backend halleluya! ")
