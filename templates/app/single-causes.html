@@ -45,22 +45,22 @@
 
                                   <li class="nav-item">
                                     <a class="nav-link " href=#>
-                                        Cases
+                                        Projects
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item">
                                             <a class="nav-link" href={% url 'submit_case' %}>
-                                                 Submit a Case
+                                                 Submit a Project
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href={% url 'cases' %}>
-                                                Active Cases
+                                                Active Projects
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href={% url 'personal_cases' %}>
-                                                 Personal Cases
+                                                 Personal Projects
                                             </a>
                                         </li>
                                     </ul>
@@ -276,7 +276,7 @@
 {#							</div>#}
 
 							<section class="widget widget_huruma_posts_thumb">
-								<h3 class="widget-title">Other Cases</h3>
+								<h3 class="widget-title">Other Projects</h3>
 
                                 {% for cause in cases %}
 								<article class="item">
