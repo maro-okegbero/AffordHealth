@@ -148,6 +148,7 @@ LOGIN_URL = 'login'
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-PAYSTACK_PUBLIC_KEY = os.getenv("PAYSTACK_PUBLIC_KEY")
+PAYSTACK_PUBLIC_KEY_TEST = os.getenv("PAYSTACK_PUBLIC_KEY_TEST")
+PAYSTACK_PUBLIC_KEY_LIVE = os.getenv("PAYSTACK_PUBLIC_KEY_LIVE")
 PAYSTACK_SECRET_KEY = os.getenv("PAYSTACK_SCRET_KEY")
 PAYSTACK_VERIFY_TRANSACTION_URL = "https://api.paystack.co/transaction/verify/:"
